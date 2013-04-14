@@ -89,6 +89,15 @@
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+                        
+                <div class="nav" role="navigation">
+			<ul>
+				<li><g:link controller="usuario">Registrarse</g:link></li>
+                                <li><g:link controller="categoria" action="list">Categorias</g:link></li>
+				<li><g:link controller="productos" action="list">Productos</g:link></li>
+				
+			</ul>
+		</div>        
 		<div id="status" role="complementary">
 			<h1>Application Status</h1>
 			<ul>

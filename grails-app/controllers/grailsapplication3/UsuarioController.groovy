@@ -99,4 +99,30 @@ class UsuarioController {
             redirect(action: "show", id: id)
         }
     }
+    
+     def login (){
+        
+        def usuarioInstance = Usuario.findByEmailUser(params.username)
+        
+        if (usuarioInstance) {
+            flash.message2 = "login succeed"
+            session.Usuario = usuarioInstance
+            session.carrito = null
+            
+        } else{
+            flash.message2 = "login failed"   
+        }
+        
+        redirect( action:"index")
+    }
+    
+    def logOut(){
+        
+        session.Usuario = null
+        redirect( action:"index")
+        
+        
+    }
+    
+    
 }

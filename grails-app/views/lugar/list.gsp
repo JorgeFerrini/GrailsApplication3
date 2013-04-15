@@ -26,7 +26,11 @@
 					
 						<th><g:message code="lugar.lugar.label" default="Lugar" /></th>
 					
+						<th><g:message code="lugar.usuario.label" default="Usuario" /></th>
+					
 						<g:sortableColumn property="tipoLugar" title="${message(code: 'lugar.tipoLugar.label', default: 'Tipo Lugar')}" />
+					
+						<g:sortableColumn property="direccion" title="${message(code: 'lugar.direccion.label', default: 'Direccion')}" />
 					
 						<g:sortableColumn property="nombreLugar" title="${message(code: 'lugar.nombreLugar.label', default: 'Nombre Lugar')}" />
 					
@@ -38,7 +42,11 @@
 					
 						<td><g:link action="show" id="${lugarInstance.id}">${fieldValue(bean: lugarInstance, field: "lugar")}</g:link></td>
 					
+						<td>${fieldValue(bean: lugarInstance, field: "usuario")}</td>
+					
 						<td>${fieldValue(bean: lugarInstance, field: "tipoLugar")}</td>
+					
+						<td>${fieldValue(bean: lugarInstance, field: "direccion")}</td>
 					
 						<td>${fieldValue(bean: lugarInstance, field: "nombreLugar")}</td>
 					

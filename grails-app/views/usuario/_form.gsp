@@ -77,14 +77,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'direccionUser', 'error')} ">
-	<label for="direccionUser">
-		<g:message code="usuario.direccionUser.label" default="Direccion User" />
-		
-	</label>
-	<g:textField name="direccionUser" value="${usuarioInstance?.direccionUser}"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'fechaNacimientoUser', 'error')} required">
 	<label for="fechaNacimientoUser">
 		<g:message code="usuario.fechaNacimientoUser.label" default="Fecha Nacimiento User" />
@@ -94,13 +86,6 @@
 </div>
 
 
-<div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'lugar', 'error')} required">
-	<label for="lugar">
-		<g:message code="usuario.lugar.label" default="Lugar" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="lugar" name="lugar.id" from="${grailsapplication3.Lugar.list()}" optionKey="id" required="" value="${usuarioInstance?.lugar?.id}" class="many-to-one"/>
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'tarjetas', 'error')} ">
 	<label for="tarjetas">

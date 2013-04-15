@@ -35,5 +35,21 @@
 				</fieldset>
 			</g:form>
 		</div>
+                <g:if test="${session.Usuario}">
+                  Login as: ${session.Usuario} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="1">Mi perfil</g:link>
+                </g:if>
+                <g:else>                   
+                  
+                  
+                  no hay usuario en este momento
+                      <g:form controller="usuario" action="login" style="padding-left:200px"> 
+                          <div style="width: 220px">
+                            <label>Name: </label><input type="text" name="username"/>
+                            <label>Password:</label><input type="password" name="password"/>
+                            <label></label><input type="submit" value="login"/>
+                          </div>
+                      </g:form>
+                      
+                </g:else>        
 	</body>
 </html>

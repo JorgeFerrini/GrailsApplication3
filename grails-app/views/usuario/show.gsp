@@ -99,15 +99,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${usuarioInstance?.direccionUser}">
-				<li class="fieldcontain">
-					<span id="direccionUser-label" class="property-label"><g:message code="usuario.direccionUser.label" default="Direccion User" /></span>
-					
-						<span class="property-value" aria-labelledby="direccionUser-label"><g:fieldValue bean="${usuarioInstance}" field="direccionUser"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${usuarioInstance?.fechaNacimientoUser}">
 				<li class="fieldcontain">
 					<span id="fechaNacimientoUser-label" class="property-label"><g:message code="usuario.fechaNacimientoUser.label" default="Fecha Nacimiento User" /></span>
@@ -126,11 +117,13 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${usuarioInstance?.lugar}">
+				<g:if test="${usuarioInstance?.lugares}">
 				<li class="fieldcontain">
-					<span id="lugar-label" class="property-label"><g:message code="usuario.lugar.label" default="Lugar" /></span>
+					<span id="lugares-label" class="property-label"><g:message code="usuario.lugares.label" default="Lugares" /></span>
 					
-						<span class="property-value" aria-labelledby="lugar-label"><g:link controller="lugar" action="show" id="${usuarioInstance?.lugar?.id}">${usuarioInstance?.lugar?.encodeAsHTML()}</g:link></span>
+						<g:each in="${usuarioInstance.lugares}" var="l">
+						<span class="property-value" aria-labelledby="lugares-label"><g:link controller="lugar" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>

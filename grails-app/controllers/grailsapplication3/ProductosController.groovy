@@ -170,4 +170,21 @@ class ProductosController {
             redirect(action: "show", id: id)
         }
     }
+    
+    def addToCarrito (Integer id, String nombre, Long precio, Long cantidad){
+        
+        println("valor del id: " +id)
+        println("valor del nombre " +nombre)
+        println("valor del precio "+ precio)
+        println("valor de la cantidad "+cantidad)
+        
+        
+        //def carritoInstance = new Carrito()
+        
+        //carritoInstance.agregarCarrito(id,nombre,precio,cantidad)
+        session.Carrito.agregarCarrito(id,nombre,precio,cantidad)
+        
+        redirect(action: "show", id: id)
+        
+    }
 }

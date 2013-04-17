@@ -1,6 +1,7 @@
 package grailsapplication3
 
 import org.springframework.dao.DataIntegrityViolationException
+import grailsapplication3.Carrito
 
 class UsuarioController {
 
@@ -103,23 +104,36 @@ class UsuarioController {
      def login (){
         
         def usuarioInstance = Usuario.findByEmailUser(params.username)
+        def carritoInstance = new Carrito()
         
         if (usuarioInstance) {
             flash.message2 = "login succeed"
             session.Usuario = usuarioInstance
-            session.carrito = null
-            
+            session.Carrito = carritoInstance
+//            if (!carritoInstance){
+//                
+//                println "esta vaina no esta haciendo el new"
+//            }else{
+//                carritoInstance.agregarCarrito(1,"prueba",450)
+//                carritoInstance.agregarCarrito(2,"prueba",450)
+//                session.Carrito = carritoInstance
+//                println "DE BOLAS Q ENTRO"
+//                
+//            }
+        redirect( action:"show", id : usuarioInstance.id)    
         } else{
             flash.message2 = "login failed"   
+            redirect ( controller: "Categoria", action: "list")
         }
         
-        redirect( action:"index")
+        
     }
     
     def logOut(){
         
         session.Usuario = null
-        redirect( action:"index")
+        session.Carrito = null
+        redirect( controller : "Categoria", action:"list")
         
         
     }

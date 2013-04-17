@@ -100,5 +100,36 @@
 			</ol>
 
 		</div>
+
+                <g:if test="${session.Usuario}">
+                  Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="${session.Usuario.id}">Mi perfil</g:link>
+                  carrito:  ${session.Carrito.numeroProductos}
+                       <g:form controller="Productos" action="addToCarrito">
+                                <g:hiddenField name="id" value="${productosInstance?.id}" />
+                                <g:hiddenField name="nombre" value="${productosInstance?.nombre}" />
+                                <g:hiddenField name="precio" value="${productosInstance?.precio}" />
+                                
+                                <g:select id="cantidad" name="cantidad" from="${2..9}" class="many-to-one" noSelection="['1': '1']"/>
+                                                        
+				<fieldset class="buttons">
+					<g:submitButton name="addToCarrito" class="Productos" value="Buscar" />
+				</fieldset>
+			</g:form>    
+
+                </g:if>
+                <g:else>                   
+                  
+                  No hay usuario en este momento
+                      <g:form controller="usuario" action="login" style="padding-left:200px"> 
+                          <div style="width: 220px">
+                            <label>Name: </label><input type="text" name="username"/>
+                            <label>Password:</label><input type="password" name="password"/>
+                            <label></label><input type="submit" value="login"/>
+                          </div>
+                      </g:form>                      
+                </g:else>        
+         
+       
+        
 	</body>
 </html>

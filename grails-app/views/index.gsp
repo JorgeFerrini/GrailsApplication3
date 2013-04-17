@@ -166,11 +166,11 @@
 		</div>               
                 <g:if test="${session.Usuario}">
                   Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="1">Mi perfil</g:link>
+                  Carrito:  (${session.Carrito.numeroProductos}) Productos        
                 </g:if>
                 <g:else>                   
                   
-                  
-                  no hay usuario en este momento
+                  No hay usuario en este momento
                       <g:form controller="usuario" action="login" style="padding-left:200px"> 
                           <div style="width: 220px">
                             <label>Name: </label><input type="text" name="username"/>

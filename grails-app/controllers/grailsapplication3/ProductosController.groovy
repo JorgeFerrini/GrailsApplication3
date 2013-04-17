@@ -178,13 +178,46 @@ class ProductosController {
         println("valor del precio "+ precio)
         println("valor de la cantidad "+cantidad)
         
+        String respuestaCarrito = true
         
         //def carritoInstance = new Carrito()
         
         //carritoInstance.agregarCarrito(id,nombre,precio,cantidad)
-        session.Carrito.agregarCarrito(id,nombre,precio,cantidad)
+        respuestaCarrito = session.Carrito.agregarCarrito(id,nombre,precio,cantidad)
         
-        redirect(action: "show", id: id)
+        println("estos son los id de los productos"+session.Carrito.idProductos)
+        if(respuestaCarrito){
+            
+            redirect(action: "show", id: id)
+        }else{
+            
+            redirect(action: "show", id: id)            
+        }
         
+        
+    }
+    
+    def removeCarrito (Integer id){
+        
+        String respuestaCarrito = true
+        
+        respuestaCarrito = session.Carrito.elimarDeCarrito(id)
+        
+        if (respuestaCarrito){
+            
+            redirect (action: "showCarrito")
+        }else{
+            
+            redirect (action: "showCarrito")            
+            
+        }
+        
+    }
+    
+    
+    
+    def showCarrito(){
+        
+        render (view: "showCarrito")
     }
 }

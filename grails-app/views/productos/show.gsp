@@ -102,8 +102,9 @@
 		</div>
 
                 <g:if test="${session.Usuario}">
-                  Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="${session.Usuario.id}">Mi perfil</g:link>
+                  Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="${session.Usuario.id}">Mi perfil</g:link> | <g:link controller="Productos" action="showCarrito">Mi Carrito</g:link>
                   carrito:  ${session.Carrito.numeroProductos}
+                  
                        <g:form controller="Productos" action="addToCarrito">
                                 <g:hiddenField name="id" value="${productosInstance?.id}" />
                                 <g:hiddenField name="nombre" value="${productosInstance?.nombre}" />

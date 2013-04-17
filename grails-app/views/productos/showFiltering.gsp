@@ -14,6 +14,16 @@
     
   </head>
   <body>
+                    <div class="nav" role="navigation">
+			<ul>
+                                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<li><g:link controller="usuario">Registrarse</g:link></li>
+                                <li><g:link controller="categoria" action="list">Categorias</g:link></li>
+				<li><g:link controller="productos" action="list">Productos</g:link></li>
+				
+			</ul>
+		</div> 
+    
     <div id="showFiltering-productos" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">

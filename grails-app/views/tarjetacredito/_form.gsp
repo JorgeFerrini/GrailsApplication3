@@ -51,11 +51,4 @@
 	<g:datePicker name="fechaVencimiento" precision="day"  value="${tarjetacreditoInstance?.fechaVencimiento}"  />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: tarjetacreditoInstance, field: 'usuario', 'error')} required">
-	<label for="usuario">
-		<g:message code="tarjetacredito.usuario.label" default="Usuario" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="usuario" name="usuario.id" from="${grailsapplication3.Usuario.list()}" optionKey="id" required="" value="${tarjetacreditoInstance?.usuario?.id}" class="many-to-one"/>
-</div>
 

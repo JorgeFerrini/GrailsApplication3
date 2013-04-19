@@ -32,15 +32,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${compraInstance?.fechaEntrega}">
-				<li class="fieldcontain">
-					<span id="fechaEntrega-label" class="property-label"><g:message code="compra.fechaEntrega.label" default="Fecha Entrega" /></span>
-					
-						<span class="property-value" aria-labelledby="fechaEntrega-label"><g:formatDate date="${compraInstance?.fechaEntrega}" /></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${compraInstance?.detalles}">
 				<li class="fieldcontain">
 					<span id="detalles-label" class="property-label"><g:message code="compra.detalles.label" default="Detalles" /></span>
@@ -48,15 +39,6 @@
 						<g:each in="${compraInstance.detalles}" var="d">
 						<span class="property-value" aria-labelledby="detalles-label"><g:link controller="detalle" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${compraInstance?.fechaCompra}">
-				<li class="fieldcontain">
-					<span id="fechaCompra-label" class="property-label"><g:message code="compra.fechaCompra.label" default="Fecha Compra" /></span>
-					
-						<span class="property-value" aria-labelledby="fechaCompra-label"><g:formatDate date="${compraInstance?.fechaCompra}" /></span>
 					
 				</li>
 				</g:if>

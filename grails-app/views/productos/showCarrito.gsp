@@ -71,5 +71,6 @@
       </table>  
   </div>     
     ${total}     
+    <g:link controller="tarjetacredito" action ="showTarjetasCompras">Comprar</g:link></li>
   </body>
 </html>

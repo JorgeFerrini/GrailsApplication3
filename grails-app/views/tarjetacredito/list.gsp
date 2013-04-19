@@ -32,7 +32,7 @@
 					
 						<g:sortableColumn property="fechaVencimiento" title="${message(code: 'tarjetacredito.fechaVencimiento.label', default: 'Fecha Vencimiento')}" />
 					
-						<th><g:message code="tarjetacredito.usuario.label" default="Usuario" /></th>
+						<th><g:message code="tarjetacredito.usuario.label" default="Eliminar" /></th>
 					
 					</tr>
 				</thead>
@@ -48,7 +48,13 @@
 					
 						<td><g:formatDate date="${tarjetacreditoInstance.fechaVencimiento}" /></td>
 					
-						<td>${fieldValue(bean: tarjetacreditoInstance, field: "usuario")}</td>
+                                                <td><g:form>
+                                                
+                                                    <g:hiddenField name="id" value="${tarjetacreditoInstance.id}" />
+                                                    <g:link class="edit" action="edit" id="${tarjetacreditoInstance.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                                                    <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+				
+                                                </g:form></td>
 					
 					</tr>
 				</g:each>

@@ -16,4 +16,10 @@ class Tarjetacredito {
         marcaComercial      (inList:['VISA','MASTERCARD','AMERICAN'])
                 
     }
+    
+    def Tarjetacredito (){
+        
+        
+        
+    }
 }

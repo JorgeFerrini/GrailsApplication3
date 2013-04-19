@@ -2,18 +2,29 @@ package grailsapplication3
 
 class Compra {
     
-    String          status
+    String                  status
     Date            fechaCompra
     Date            fechaEntrega
-    Tarjetacredito  tarjeta
+    
     
       
-    static belongsTo = [usuario : Usuario]
+    static belongsTo = [usuario : Usuario , tarjeta : Tarjetacredito]
     static hasMany = [ detalles:Detalle]
     
     static constraints = {
         status              (inList:['EN PROCESO','ENTREGADO'])
-        fechaEntrega        (nulleable:true)
+        fechaEntrega        (nullable: true)
         
     }
+    
+    def compra (){
+        
+        Date fecha = new Date()
+        this.fechaCompra = fecha
+        this.fechaEntrega = fecha
+        this.status = "EN PROCESO"
+        
+        
+    }
+    
 }

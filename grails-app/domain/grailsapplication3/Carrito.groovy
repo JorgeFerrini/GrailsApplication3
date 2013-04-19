@@ -27,10 +27,10 @@ class Carrito {
             if(this.idProductos[i] == 0){
                 
                 println("esta es la cantidad de productos que hay"+numeroProductos)
-                this.idProductos       [this.numeroProductos]       = id
-                this.nombreProductos   [this.numeroProductos]       = nombre
-                this.precioProductos   [this.numeroProductos]       = precio
-                this.cantidadProductos [this.numeroProductos]       = cantidad
+                this.idProductos       [i]       = id
+                this.nombreProductos   [i]       = nombre
+                this.precioProductos   [i]       = precio
+                this.cantidadProductos [i]       = cantidad
         
                 this.numeroProductos ++       
                 return true

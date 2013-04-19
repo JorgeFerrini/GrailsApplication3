@@ -138,8 +138,8 @@
                                           </g:else>
 					</g:each>
                                   <g:link controller="Productos" action="show" id="5">Revisar todos los productos</g:link>
-                                  <g:link controller="Productos" action="showFiltering" value="prueba123">pueba de busqueda</g:link>
-                                  
+                                  <g:link controller="Productos" action="showFiltering" value="prueba123">prueba de busqueda</g:link>
+                                  <g:link controller="Tarjetacredito" action="showTarjetasCompras">tarjetas</g:link>
                         
                                   
                         

@@ -1,6 +1,7 @@
 package grailsapplication3
 
 import org.springframework.dao.DataIntegrityViolationException
+import grailsapplication3.Usuario
 
 class TarjetacreditoController {
 
@@ -12,7 +13,7 @@ class TarjetacreditoController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [tarjetacreditoInstanceList: Tarjetacredito.list(params), tarjetacreditoInstanceTotal: Tarjetacredito.count()]
+        [tarjetacreditoInstanceList: Tarjetacredito.findAllByUsuario(session.Usuario), tarjetacreditoInstanceTotal: Tarjetacredito.count()]
     }
 
     def create() {
@@ -20,7 +21,9 @@ class TarjetacreditoController {
     }
 
     def save() {
-        def tarjetacreditoInstance = new Tarjetacredito(params)
+        def usuarioInstance = Usuario.findById(session.Usuario.id)
+        params.usuario = usuarioInstance
+        def tarjetacreditoInstance = new Tarjetacredito(params)        
         if (!tarjetacreditoInstance.save(flush: true)) {
             render(view: "create", model: [tarjetacreditoInstance: tarjetacreditoInstance])
             return
@@ -99,4 +102,10 @@ class TarjetacreditoController {
             redirect(action: "show", id: id)
         }
     }
+    
+    def showTarjetasCompras(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        [tarjetacreditoInstanceList: Tarjetacredito.findAllByUsuario(session.Usuario), tarjetacreditoInstanceTotal: Tarjetacredito.count()]
+    }
+    
 }

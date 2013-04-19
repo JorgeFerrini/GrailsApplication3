@@ -17,14 +17,6 @@ class Compra {
         
     }
     
-    def compra (){
-        
-        Date fecha = new Date()
-        this.fechaCompra = fecha
-        this.fechaEntrega = fecha
-        this.status = "EN PROCESO"
-        
-        
-    }
+    
     
 }

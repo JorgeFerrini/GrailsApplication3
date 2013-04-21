@@ -132,8 +132,9 @@ class CompraController {
             
             def carritoInstance = new Carrito()
             session.carrito = carritoInstance
-            
-            redirect(action: "list")
+            println("COMPRAAAAA instancia    "+compraInstance.id)
+            redirect(controller: "Pdf", action: "pdf1" , compra: compraInstance)
+            //redirect( controller: "Compra", action: "list")
             return
         }
     

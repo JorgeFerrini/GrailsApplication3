@@ -34,14 +34,6 @@
 	<g:select name="tipoIdUser" from="${usuarioInstance.constraints.tipoIdUser.inList}" value="${usuarioInstance?.tipoIdUser}" valueMessagePrefix="usuario.tipoIdUser" noSelection="['': '']"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'emailUser', 'error')} ">
-	<label for="emailUser">
-		<g:message code="usuario.emailUser.label" default="Email User" />
-		
-	</label>
-	<g:field type="email" name="emailUser" value="${usuarioInstance?.emailUser}"/>
-</div>
-
 
 <div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'calificaciones', 'error')} ">
 	<label for="calificaciones">

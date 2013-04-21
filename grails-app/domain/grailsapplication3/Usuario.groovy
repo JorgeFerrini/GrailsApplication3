@@ -10,7 +10,7 @@ class Usuario {
     Date   fechaNacimientoUser
     Date   fechaRegistroUser
     String activacionUser    
-    
+    String idGoogle 
       
     
     
@@ -24,7 +24,7 @@ class Usuario {
         nombreUser          (size:3..25)
         apellidoUser        (size:2..25)
         identificadorUser   (size:1..20)
-        tipoIdUser          (inList:['ID','PASAPORTE'])
+        tipoIdUser          (inList:['CEDULA','PASAPORTE'])
         emailUser           (email:true)        
         activacionUser      (inList:['SI','NO'])
                

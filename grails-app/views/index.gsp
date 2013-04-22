@@ -129,31 +129,38 @@
 			</ul>
 		</div>        
 		<div id="status" role="complementary">
-			<h1>Application Status</h1>
-			<ul>
-				<li>App version: <g:meta name="app.version"/></li>
-				<li>Grails version: <g:meta name="app.grails.version"/></li>
-				<li>Groovy version: ${GroovySystem.getVersion()}</li>
-				<li>JVM version: ${System.getProperty('java.version')}</li>
-				<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
-				<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-				<li>Domains: ${grailsApplication.domainClasses.size()}</li>
-				<li>Services: ${grailsApplication.serviceClasses.size()}</li>
-				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-			</ul>
 			<h1>Installed Plugins</h1>
 			<ul>
-				<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-					<li>${plugin.name} - ${plugin.version}</li>
-				</g:each>
+                        <g:if test="${session.Usuario}">
+                        Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="1">Mi perfil</g:link>
+                        Carrito:  (${session.Carrito.numeroProductos}) Productos        
+                        </g:if>
+                        <g:else>                   
+                        No hay usuario en este momento
+                        <g:form controller="usuario" action="login"> 
+                     <!--     <div>
+                            <label>Name: </label><input type="text" name="username"/>
+                            <label>Password:</label><input type="password" name="password"/>
+                            <label></label><input type="submit" value="login"/>-->
+                     <div id ="janrainEngageEmbed" controller="Usuario"></div>
+                      </g:form>
+                      
+                </g:else> 
 			</ul>
 		</div>
 		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
-			<p>Congratulations, you have successfully started your first Grails application! At the moment
-			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
-			   content you may choose. Below is a list of controllers that are currently deployed in this application,
-			   click on each to execute its default action:</p>
+			<h1>Welcome to Le Cloud Products</h1>
+			<g:form controller="Productos" action="showFiltering" >
+                                  <div class="fieldcontain ${hasErrors(bean: productosInstance, field: 'nombre', 'error')} ">
+                                      
+                                      <g:textField name="nombre" size="70" maxlength="50" value="${productosInstance?.nombre}"/>
+                                      <g:submitButton name="showFiltering" class="Productos" value="Buscar" />
+                                  </div>
+                        
+			<!--	<fieldset class="buttons">
+					<g:submitButton name="showFiltering" class="Productos" value="Buscar" />
+				</fieldset> -->
+			</g:form>
 
 			<div id="controller-list" role="navigation">
 				<h2>Available Controllers:</h2>
@@ -171,45 +178,10 @@
                                   <g:link controller="Productos" action="showFiltering" value="prueba123">prueba de busqueda</g:link>
                                   <g:link controller="Tarjetacredito" action="showTarjetasCompras">tarjetas</g:link>
                         
-                                  
+                         </ul>
                         
-                        
-                        
-				</ul>
-                        
-                        
-                        
-                                
-                        <g:form controller="Productos" action="showFiltering" >
-                                  <div class="fieldcontain ${hasErrors(bean: productosInstance, field: 'nombre', 'error')} ">
-                                      
-                                      <g:textField name="nombre" maxlength="75" value="${productosInstance?.nombre}"/>
-                                  </div>
-                        
-				<fieldset class="buttons">
-					<g:submitButton name="showFiltering" class="Productos" value="Buscar" />
-				</fieldset>
-			</g:form>
-                                
-                        
-			</div>
+                      </div>
 		</div>               
-                <g:if test="${session.Usuario}">
-                  Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="1">Mi perfil</g:link>
-                  Carrito:  (${session.Carrito.numeroProductos}) Productos        
-                </g:if>
-                <g:else>                   
-                  
-                  No hay usuario en este momento
-                      <g:form controller="usuario" action="login" style="padding-left:200px"> 
-                          <div style="width: 220px">
-                            <label>Name: </label><input type="text" name="username"/>
-                            <label>Password:</label><input type="password" name="password"/>
-                            <label></label><input type="submit" value="login"/>
-                          </div>
-                        <div id="janrainEngageEmbed" controller="Usuario" ></div>
-                      </g:form>
-                      
-                </g:else>  
+                
 	</body>
 </html>

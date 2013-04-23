@@ -23,7 +23,7 @@ def document = new Document()
 println("Document Created")
  
 // step 2
-PdfWriter.getInstance(document, new FileOutputStream("document"+usuarioInstance.identificadorUser+".pdf"))
+PdfWriter.getInstance(document, new FileOutputStream("./web-app/web-inf/document"+usuarioInstance.identificadorUser+".pdf"))
 println("PdfWriter Created")
  
 // step 3

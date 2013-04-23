@@ -26,23 +26,6 @@
 	<g:select name="marcaComercial" from="${tarjetacreditoInstance.constraints.marcaComercial.inList}" value="${tarjetacreditoInstance?.marcaComercial}" valueMessagePrefix="tarjetacredito.marcaComercial" noSelection="['': '']"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: tarjetacreditoInstance, field: 'compras', 'error')} ">
-	<label for="compras">
-		<g:message code="tarjetacredito.compras.label" default="Compras" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${tarjetacreditoInstance?.compras?}" var="c">
-    <li><g:link controller="compra" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="compra" action="create" params="['tarjetacredito.id': tarjetacreditoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'compra.label', default: 'Compra')])}</g:link>
-</li>
-</ul>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: tarjetacreditoInstance, field: 'fechaVencimiento', 'error')} required">
 	<label for="fechaVencimiento">
 		<g:message code="tarjetacredito.fechaVencimiento.label" default="Fecha Vencimiento" />

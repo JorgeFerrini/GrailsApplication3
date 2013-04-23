@@ -11,8 +11,9 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-			</ul>
+                                <li><g:link controller="categoria" action="list">Categorias</g:link></li>
+				<li><g:link controller="productos" action="list">Productos</g:link></li>				
+                        </ul>
 		</div>
 		<div id="create-usuario" class="content scaffold-create" role="main">
 			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
@@ -42,13 +43,7 @@
                   
                   
                   no hay usuario en este momento
-                      <g:form controller="usuario" action="login" style="padding-left:200px"> 
-                          <div style="width: 220px">
-                            <label>Name: </label><input type="text" name="username"/>
-                            <label>Password:</label><input type="password" name="password"/>
-                            <label></label><input type="submit" value="login"/>
-                          </div>
-                      </g:form>
+                      
                       
                 </g:else>        
 	</body>

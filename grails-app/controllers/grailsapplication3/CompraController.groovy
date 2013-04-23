@@ -3,6 +3,11 @@ package grailsapplication3
 import org.springframework.dao.DataIntegrityViolationException
 import grailsapplication3.Detalle
 import grailsapplication3.Productos
+import grailsapplication3.Carrito
+
+import com.itextpdf.text.Document
+import com.itextpdf.text.Paragraph
+import com.itextpdf.text.pdf.PdfWriter
 
 class CompraController {
 
@@ -14,7 +19,7 @@ class CompraController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [compraInstanceList: Compra.list(params), compraInstanceTotal: Compra.count()]
+        [compraInstanceList: Compra.findAllByUsuario(session.Usuario), compraInstanceTotal: Compra.count()]
     }
 
     def create() {
@@ -104,8 +109,11 @@ class CompraController {
     def guardarCompra(Long id){
         
         Date fecha = new Date()
+        def productoInstance
+        def detalleInstance
+        Integer cantidadProducto
         String status = "EN PROCESO"
-        
+        Integer total = 0
         params.status = status
         params.fechaCompra = fecha
         params.fechaEntrega = null
@@ -128,16 +136,81 @@ class CompraController {
             println("ENTRA EN EL Q NO LA CREO")
             render(view: "create", model: [compraInstance: compraInstance])
             return
-        }else{            
+        }else{
+            
+           for (int i=0; i<=9;i++){
+            
+            if(session.Carrito.idProductos[i] != 0){
+                
+                productoInstance = Productos.findById(session.Carrito.idProductos[i]) 
+                cantidadProducto = session.Carrito.cantidadProductos [i]
+                detalleInstance = new Detalle(cantidadProducto, productoInstance, compraInstance)
+                detalleInstance.save()
+        
+                productoInstance = null               
+                detalleInstance  = null
+            }
+            
+            }
+            
+      
+        
+// step 1
+def document = new Document()
+println("Document Created")
+ 
+// step 2
+PdfWriter.getInstance(document, new FileOutputStream("./web-app/web-inf/document"+compraInstance.id+".pdf"))
+println("PdfWriter Created")
+ 
+// step 3
+document.open()
+println("Document Opened")
+ 
+// step 4
+document.add(new Paragraph("Le Cloud Products!"))
+document.add(new Paragraph("RIF: J-45676548-9"))
+document.add(new Paragraph("Direccion: Av. Paez, C.C Multiplaza piso 3 local 32"))
+document.add(new Paragraph("Nombre: "+session.Usuario.nombreUser))
+document.add(new Paragraph("Apellido: "+session.Usuario.apellidoUser))
+document.add(new Paragraph("CI: "+ session.Usuario.identificadorUser))
+document.add(new Paragraph("Compra No : "+ compraInstance.id))
+document.add(new Paragraph("Tarjeta No : "+ tarjetaCreditoInstance.numero))
+document.add(new Paragraph("Direccion de Entrega: Caracas, Venezuela"))
+document.add(new Paragraph("Direccion : Caracas, Venezuela"))
+document.add(new Paragraph(""))
+document.add(new Paragraph(""))
+document.add(new Paragraph(""))
+           for (int i=0; i<=9;i++){
+            
+            if(session.Carrito.idProductos[i] != 0){
+                
+                document.add(new Paragraph("Nombre Producto :"+session.Carrito.nombreProductos[i]))
+                document.add(new Paragraph("Precio Producto :"+session.Carrito.precioProductos[i]))
+                document.add(new Paragraph("Cantidad Producto :"+session.Carrito.cantidadProductos[i]))
+                total = total + (session.Carrito.precioProductos[i] * session.Carrito.cantidadProductos[i] )
+                
+            }
+            
+            }
+
+ document.add(new Paragraph("Monto Total Orden: "+total+" BsF."))           
+println("Content Added")
+ 
+// step 5
+document.close()
+println("Document Closed")
             
             def carritoInstance = new Carrito()
-            session.carrito = carritoInstance
+            session.Carrito = carritoInstance
             println("COMPRAAAAA instancia    "+compraInstance.id)
-            redirect(controller: "Pdf", action: "pdf1" , compra: compraInstance)
+            //redirect(controller: "Pdf", action: "pdf1" , compra: compraInstance)
             //redirect( controller: "Compra", action: "list")
-            return
+            //render "listo esta vaina! "
+            session.CompraPDF = compraInstance.id
+            redirect (controller: "Attach") //AQUI NOS QUEDAMOS ECHATE AGUA
         }
     
     
-    }
+    }    
 }

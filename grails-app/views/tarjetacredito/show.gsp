@@ -12,8 +12,10 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list" action="list">Tarjetas</g:link></li>
+				<li><g:link class="create" action="create">Agregar Tarjeta</g:link></li>
+                                <li><g:link controller="categoria" action="list">Categorias</g:link></li>
+				<li><g:link controller="productos" action="list">Productos</g:link></li>
 			</ul>
 		</div>
 		<div id="show-tarjetacredito" class="content scaffold-show" role="main">
@@ -69,16 +71,7 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${tarjetacreditoInstance?.usuario}">
-				<li class="fieldcontain">
-					<span id="usuario-label" class="property-label"><g:message code="tarjetacredito.usuario.label" default="Usuario" /></span>
-					
-						<span class="property-value" aria-labelledby="usuario-label"><g:link controller="usuario" action="show" id="${tarjetacreditoInstance?.usuario?.id}">${tarjetacreditoInstance?.usuario?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
+						
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

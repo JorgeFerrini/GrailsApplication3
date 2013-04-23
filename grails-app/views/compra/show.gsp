@@ -13,7 +13,6 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="show-compra" class="content scaffold-show" role="main">
@@ -43,10 +42,10 @@
 			
 				<g:if test="${compraInstance?.detalles}">
 				<li class="fieldcontain">
-					<span id="detalles-label" class="property-label"><g:message code="compra.detalles.label" default="Detalles" /></span>
+					<span id="detalles-label" class="property-label"><g:message code="compra.detalles.label" default="Calificar y Comentar" /></span>
 					
 						<g:each in="${compraInstance.detalles}" var="d">
-						<span class="property-value" aria-labelledby="detalles-label"><g:link controller="detalle" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="detalles-label"><g:link controller="calificacion" action="create" id="${d.productos.id}">${d?.productos.nombre}     Cantidad: ${d?.cantidad}    Precio Unidad: ${d?.productos.precio}</g:link></span>
 						</g:each>
 					
 				</li>
@@ -65,28 +64,12 @@
 				<li class="fieldcontain">
 					<span id="tarjeta-label" class="property-label"><g:message code="compra.tarjeta.label" default="Tarjeta" /></span>
 					
-						<span class="property-value" aria-labelledby="tarjeta-label"><g:link controller="tarjetacredito" action="show" id="${compraInstance?.tarjeta?.id}">${compraInstance?.tarjeta?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${compraInstance?.usuario}">
-				<li class="fieldcontain">
-					<span id="usuario-label" class="property-label"><g:message code="compra.usuario.label" default="Usuario" /></span>
-					
-						<span class="property-value" aria-labelledby="usuario-label"><g:link controller="usuario" action="show" id="${compraInstance?.usuario?.id}">${compraInstance?.usuario?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="tarjeta-label"><g:link controller="tarjetacredito" action="show" id="${compraInstance?.tarjeta?.id}">${compraInstance?.tarjeta?.numero}</g:link></span>
 					
 				</li>
 				</g:if>
 			
 			</ol>
-			<g:form>
-				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${compraInstance?.id}" />
-					<g:link class="edit" action="edit" id="${compraInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
 		</div>
 	</body>
 </html>

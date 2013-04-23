@@ -12,7 +12,9 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" action="create">Agregar Tarjeta</g:link></li>
+                                <li><g:link controller="categoria" action="list">Categorias</g:link></li>
+				<li><g:link controller="productos" action="list">Productos</g:link></li>
 			</ul>
 		</div>
 		<div id="list-tarjetacredito" class="content scaffold-list" role="main">

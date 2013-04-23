@@ -122,7 +122,7 @@
                        
                 <div class="nav" role="navigation">
 			<ul>
-				<li><g:link controller="usuario">Registrarse</g:link></li>
+				
                                 <li><g:link controller="categoria" action="list">Categorias</g:link></li>
 				<li><g:link controller="productos" action="list">Productos</g:link></li>
 				
@@ -195,18 +195,15 @@
 			</div>
 		</div>               
                 <g:if test="${session.Usuario}">
-                  Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="1">Mi perfil</g:link>
-                  Carrito:  (${session.Carrito.numeroProductos}) Productos        
+                  Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="${session.Usuario.id}">Mi perfil</g:link> | <g:link controller="Compra" action="list">Mis Compras</g:link> | <g:link controller="Tarjetacredito" action="list" max="5">Mis Tarjetas</g:link> | <g:link controller="Calificacion" action="listPorUsuario">Mis Calificaciones</g:link> | <g:link controller="Productos" action="showCarrito">Carrito:  (${session.Carrito.numeroProductos}) Productos</g:link>        
+                        
+                  
                 </g:if>
                 <g:else>                   
                   
                   No hay usuario en este momento
                       <g:form controller="usuario" action="login" style="padding-left:200px"> 
-                          <div style="width: 220px">
-                            <label>Name: </label><input type="text" name="username"/>
-                            <label>Password:</label><input type="password" name="password"/>
-                            <label></label><input type="submit" value="login"/>
-                          </div>
+                          
                         <div id="janrainEngageEmbed" controller="Usuario" ></div>
                       </g:form>
                       

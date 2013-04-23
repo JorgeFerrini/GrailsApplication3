@@ -122,27 +122,15 @@
 				<li class="fieldcontain">
 					<span id="calificaciones-label" class="property-label"><g:message code="productos.calificaciones.label" default="Calificaciones" /></span>
 					
-						<g:each in="${productosInstance.calificaciones}" var="c">
-						<span class="property-value" aria-labelledby="calificaciones-label"><g:link controller="calificacion" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="calificaciones-label"><g:link controller="calificacion" action="listPorProducto" id="${productosInstance?.id}">Calificaciones del Producto</g:link></span>
+						
 					
 				</li>
 				</g:if>
 			
 
 			
-				<g:if test="${productosInstance?.detalles}">
-				<li class="fieldcontain">
-					<span id="detalles-label" class="property-label"><g:message code="productos.detalles.label" default="Detalles" /></span>
-					
-						<g:each in="${productosInstance.detalles}" var="d">
-						<span class="property-value" aria-labelledby="detalles-label"><g:link controller="detalle" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-			
+		
 				<g:if test="${productosInstance?.imagenes}">
 				<li class="fieldcontain">
 					<span id="imagenes-label" class="property-label"><g:message code="productos.imagenes.label" default="Imagenes" /></span>
@@ -189,11 +177,7 @@
                   
                   No hay usuario en este momento
                       <g:form controller="usuario" action="login" style="padding-left:200px"> 
-                          <div style="width: 220px">
-                            <label>Name: </label><input type="text" name="username"/>
-                            <label>Password:</label><input type="password" name="password"/>
-                            <label></label><input type="submit" value="login"/>
-                          </div>
+                          <div id="janrainEngageEmbed" controller="Usuario" ></div>
                       </g:form>                      
                 </g:else>        
          

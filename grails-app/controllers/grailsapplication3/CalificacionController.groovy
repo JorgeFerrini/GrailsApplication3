@@ -1,6 +1,8 @@
 package grailsapplication3
 
 import org.springframework.dao.DataIntegrityViolationException
+import  grailsapplication3.Productos
+import  grailsapplication3.Usuario
 
 class CalificacionController {
 
@@ -15,12 +17,20 @@ class CalificacionController {
         [calificacionInstanceList: Calificacion.list(params), calificacionInstanceTotal: Calificacion.count()]
     }
 
-    def create() {
+    def create(Long id) {
+        def productoInstance = Productos.findById(id)
+        session.ProductoComentario = productoInstance
+        println("Valor del Producto" + session.ProductoComentario)
         [calificacionInstance: new Calificacion(params)]
     }
 
     def save() {
+        
+        params.producto = session.ProductoComentario
+        params.usuario  = session.Usuario
         def calificacionInstance = new Calificacion(params)
+        println("el id del usuario es "+session.Usuario )
+        println("el id del usuario es "+session.ProductoComentario )
         if (!calificacionInstance.save(flush: true)) {
             render(view: "create", model: [calificacionInstance: calificacionInstance])
             return
@@ -99,4 +109,17 @@ class CalificacionController {
             redirect(action: "show", id: id)
         }
     }
+    
+    def listPorUsuario(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        [calificacionInstanceList: Calificacion.findAllByUsuario(session.Usuario), calificacionInstanceTotal: Calificacion.count()]
+    }
+    
+    def listPorProducto(Integer max, Long id) {
+        def productoInstance = Productos.findById(id)
+        params.max = Math.min(max ?: 10, 100)
+        [calificacionInstanceList: Calificacion.findAllByProducto(productoInstance), calificacionInstanceTotal: Calificacion.count()]
+    }
+    
+    
 }

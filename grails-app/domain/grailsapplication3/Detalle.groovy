@@ -8,7 +8,7 @@ class Detalle {
 
     static belongsTo = [productos :Productos, compra:Compra]
     
-    def detalle( Integer cantidad, Productos producto, Compra compra){
+    def Detalle( Integer cantidad, Productos producto, Compra compra){
         
         this.cantidad = cantidad
         this.productos = producto

@@ -105,7 +105,9 @@ class UsuarioController {
         try {
             usuarioInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'usuario.label', default: 'Usuario'), id])
-            redirect(action: "list")
+            session.Usuario = null
+            session.Carrito = null
+            redirect(controller: "categoria" , action: "list")
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'usuario.label', default: 'Usuario'), id])
@@ -196,7 +198,6 @@ def janrainMobileSignIn () {
             session.Carrito = carritoInstance
             redirect( action:"show", id : usuarioInstance.id)    
         }else{
-            
                 redirect( action: "verificarCuenta")
                 
         }
@@ -222,10 +223,18 @@ def janrainMobileSignIn () {
     
        def verificar (Long id) {
            
-           def usuarioInstance = Usuario.findById(id)
-           usuarioInstance.activacionUser = "SI"
            
+           def carritoInstance = new Carrito()
+           def usuarioInstance = Usuario.findById(id)
+           if (usuarioInstance){
+           usuarioInstance.activacionUser = "SI"
+           session.Usuario = usuarioInstance
+           session.Carrito = carritoInstance           
            redirect(action: "show" , id: usuarioInstance.id)
+           }else{
+               redirect(controller: "Categoria" , action: "list" )
+            
+           }
 
 
         

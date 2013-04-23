@@ -12,7 +12,8 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link controller="categoria" action="list">Categorias</g:link></li>
+				<li><g:link controller="productos" action="list">Productos</g:link></li>
 			</ul>
 		</div>
 		<div id="list-compra" class="content scaffold-list" role="main">
@@ -32,7 +33,7 @@
 					
 						<th><g:message code="compra.tarjeta.label" default="Tarjeta" /></th>
 					
-						<th><g:message code="compra.usuario.label" default="Usuario" /></th>
+						<th>Archivo PDF</th>
 					
 					</tr>
 				</thead>
@@ -46,10 +47,10 @@
 					
 						<td><g:formatDate date="${compraInstance.fechaCompra}" /></td>
 					
-						<td>${fieldValue(bean: compraInstance, field: "tarjeta")}</td>
+						<td>${compraInstance.tarjeta.numero}</td>
 					
-						<td>${fieldValue(bean: compraInstance, field: "usuario")}</td>
-					
+                                                <td><a href="<g:createLinkTo dir="/WEB-INF" file="document${compraInstance.id}.pdf" /> " ><img src="<g:createLinkTo dir="/images" file="LOGO_PDF.png" /> " /></a></td>
+                                                
 					</tr>
 				</g:each>
 				</tbody>
@@ -58,5 +59,32 @@
 				<g:paginate total="${compraInstanceTotal}" />
 			</div>
 		</div>
+                
+                <g:if test="${session.Usuario}">
+                  Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="${session.Usuario.id}">Mi perfil</g:link> | <g:link controller="Productos" action="showCarrito">Mi Carrito</g:link>
+                  carrito:  ${session.Carrito.numeroProductos}
+                  
+                       <g:form controller="Productos" action="addToCarrito">
+                                <g:hiddenField name="id" value="${productosInstance?.id}" />
+                                <g:hiddenField name="nombre" value="${productosInstance?.nombre}" />
+                                <g:hiddenField name="precio" value="${productosInstance?.precio}" />
+                                
+                                <g:select id="cantidad" name="cantidad" from="${2..9}" class="many-to-one" noSelection="['1': '1']"/>
+                                                        
+				<fieldset class="buttons">
+					<g:submitButton name="addToCarrito" class="Productos" value="Buscar" />
+				</fieldset>
+			</g:form>    
+
+                </g:if>
+                <g:else>                   
+                  
+                  No hay usuario en este momento
+                      <g:form controller="usuario" action="login" style="padding-left:200px"> 
+                          <div id="janrainEngageEmbed" controller="Usuario" ></div>
+                      </g:form>                      
+                </g:else>        
+        
+        
 	</body>
 </html>

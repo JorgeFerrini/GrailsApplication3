@@ -2,14 +2,6 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: detalleInstance, field: 'total', 'error')} required">
-	<label for="total">
-		<g:message code="detalle.total.label" default="Total" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="total" type="number" value="${detalleInstance.total}" required=""/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: detalleInstance, field: 'cantidad', 'error')} required">
 	<label for="cantidad">
 		<g:message code="detalle.cantidad.label" default="Cantidad" />

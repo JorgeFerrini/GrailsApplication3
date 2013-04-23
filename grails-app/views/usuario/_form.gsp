@@ -35,40 +35,6 @@
 </div>
 
 
-<div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'calificaciones', 'error')} ">
-	<label for="calificaciones">
-		<g:message code="usuario.calificaciones.label" default="Calificaciones" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${usuarioInstance?.calificaciones?}" var="c">
-    <li><g:link controller="calificacion" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="calificacion" action="create" params="['usuario.id': usuarioInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'calificacion.label', default: 'Calificacion')])}</g:link>
-</li>
-</ul>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'compras', 'error')} ">
-	<label for="compras">
-		<g:message code="usuario.compras.label" default="Compras" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${usuarioInstance?.compras?}" var="c">
-    <li><g:link controller="compra" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="compra" action="create" params="['usuario.id': usuarioInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'compra.label', default: 'Compra')])}</g:link>
-</li>
-</ul>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'fechaNacimientoUser', 'error')} required">
 	<label for="fechaNacimientoUser">
 		<g:message code="usuario.fechaNacimientoUser.label" default="Fecha Nacimiento User" />
@@ -77,22 +43,4 @@
 	<g:datePicker name="fechaNacimientoUser" precision="day"  value="${usuarioInstance?.fechaNacimientoUser}"  />
 </div>
 
-
-
-<div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'tarjetas', 'error')} ">
-	<label for="tarjetas">
-		<g:message code="usuario.tarjetas.label" default="Tarjetas" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${usuarioInstance?.tarjetas?}" var="t">
-    <li><g:link controller="tarjetacredito" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="tarjetacredito" action="create" params="['usuario.id': usuarioInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'tarjetacredito.label', default: 'Tarjetacredito')])}</g:link>
-</li>
-</ul>
-
-</div>
 

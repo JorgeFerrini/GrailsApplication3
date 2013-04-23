@@ -16,8 +16,7 @@
   <body>
                     <div class="nav" role="navigation">
 			<ul>
-                                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link controller="usuario">Registrarse</g:link></li>
+                                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>				
                                 <li><g:link controller="categoria" action="list">Categorias</g:link></li>
 				<li><g:link controller="productos" action="list">Productos</g:link></li>
 				
@@ -60,7 +59,7 @@
                         
                         
                       </g:else>
-                    ${num ++}
+                    <font color="white">${num ++}</font>
                     
                       </tr>
                     </g:while>

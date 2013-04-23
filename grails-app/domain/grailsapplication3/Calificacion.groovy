@@ -13,6 +13,16 @@ class Calificacion {
     
     static constraints = {
         
+    comentario (size:3..2500)
+    
+    }
+    
+    
+    def Calificacion(){
+        
+        Date fecha = new Date()        
+        this.fechaCalificacion = fecha
+        
         
     }
 }

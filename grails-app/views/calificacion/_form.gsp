@@ -15,6 +15,6 @@
 		<g:message code="calificacion.valorCalificacion.label" default="Valor Calificacion" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="valorCalificacion" type="number" value="${calificacionInstance.valorCalificacion}" required=""/>
+	<g:select id="cantidad" name="valorCalificacion" type="number" from="${2..5}" class="many-to-one" noSelection="['1': '1']"/>
 </div>
 

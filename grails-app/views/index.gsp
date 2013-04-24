@@ -34,6 +34,30 @@
     s.parentNode.insertBefore(e, s);
 })();
 </script>
+<script language="javascript">
+step=0;
+function autoImgFlip() {
+if (step < 8) {step++;}
+else {step=0;}
+if (step==0)
+{a.src="1.jpg";}
+if (step==1)
+{a.src="2.jpg";}
+setTimeout("autoImgFlip()", 3000);
+if (step==2)
+{a.src="3.jpg";}
+if (step==3)
+{a.src="4.jpg";}
+if (step==4)
+{a.src="5.jpg";}
+if (step==5)
+{a.src="6.jpg";}
+if (step==6)
+{a.src="7.jpg";}
+if (step==7)
+{a.src="8.jpg";}
+}
+</script>
 
 		<meta name="layout" content="main"/>
 		<title>Welcome to Grails</title>
@@ -117,7 +141,7 @@
 		<g:set var="entityName" value="${message(code: 'categoria.label', default: 'Categoria')}" />
                                 
 	</head>
-	<body>                
+	<body onLoad="autoImgFlip();">                
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
                        
                 <div class="nav" role="navigation">
@@ -128,73 +152,26 @@
 				
 			</ul>
 		</div>        
-		<div id="status" role="complementary">
-			<h1>Application Status</h1>
-			<ul>
-				<li>App version: <g:meta name="app.version"/></li>
-				<li>Grails version: <g:meta name="app.grails.version"/></li>
-				<li>Groovy version: ${GroovySystem.getVersion()}</li>
-				<li>JVM version: ${System.getProperty('java.version')}</li>
-				<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
-				<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-				<li>Domains: ${grailsApplication.domainClasses.size()}</li>
-				<li>Services: ${grailsApplication.serviceClasses.size()}</li>
-				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-			</ul>
-			<h1>Installed Plugins</h1>
-			<ul>
-				<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-					<li>${plugin.name} - ${plugin.version}</li>
-				</g:each>
-			</ul>
-		</div>
+		
 		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
-			<p>Congratulations, you have successfully started your first Grails application! At the moment
-			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
-			   content you may choose. Below is a list of controllers that are currently deployed in this application,
-			   click on each to execute its default action:</p>
-
-			<div id="controller-list" role="navigation">
-				<h2>Available Controllers:</h2>
-				<ul>
-					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                                          <g:if test ="${c.fullName.contains('grailsapplication3.UsuarioController')}">
-						<li class="controller"><g:link controller="${c.logicalPropertyName}">Registro de Usuario</g:link></li>
-                                          </g:if>      
-                                          <g:else>
-                                              <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-                        
-                                          </g:else>
-					</g:each>
-                                  <g:link controller="Productos" action="show" id="5">Revisar todos los productos</g:link>
-                                  <g:link controller="Productos" action="showFiltering" value="prueba123">prueba de busqueda</g:link>
-                                  <g:link controller="Tarjetacredito" action="showTarjetasCompras">tarjetas</g:link>
-                        
-                                  
-                        
-                        
-                        
-				</ul>
-                        
-                        
-                        
-                                
-                        <g:form controller="Productos" action="showFiltering" >
+			<h1>Busca tu Producto</h1>
+			<g:form controller="Productos" action="showFiltering" >
                                   <div class="fieldcontain ${hasErrors(bean: productosInstance, field: 'nombre', 'error')} ">
                                       
-                                      <g:textField name="nombre" maxlength="75" value="${productosInstance?.nombre}"/>
+                                      <g:textField name="nombre" size="70" maxlength="50" value="${productosInstance?.nombre}"/>
+                                      <g:submitButton name="showFiltering" class="Productos" value="Buscar" />
                                   </div>
                         
-				<fieldset class="buttons">
-					<g:submitButton name="showFiltering" class="Productos" value="Buscar" />
-				</fieldset>
 			</g:form>
-                                
+
+			<div id="controller-list" role="navigation">
+				<h2>Productos en Oferta!!:</h2>
                         
-			</div>
-		</div>               
-                <g:if test="${session.Usuario}">
+                                <ul>
+                                  <img src="images/1.jpg" id="a">
+                                </ul>
+                                <ul>
+                                    <g:if test="${session.Usuario}">
                   Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="${session.Usuario.id}">Mi perfil</g:link> | <g:link controller="Compra" action="list">Mis Compras</g:link> | <g:link controller="Tarjetacredito" action="list" max="5">Mis Tarjetas</g:link> | <g:link controller="Calificacion" action="listPorUsuario">Mis Calificaciones</g:link> | <g:link controller="Productos" action="showCarrito">Carrito:  (${session.Carrito.numeroProductos}) Productos</g:link>        
                         
                   
@@ -207,6 +184,18 @@
                         <div id="janrainEngageEmbed" controller="Usuario" ></div>
                       </g:form>
                       
-                </g:else>  
+                </g:else>
+                        
+				</ul>
+                        
+                        
+                        
+                                
+                        
+                                
+                        
+			</div>
+		</div>               
+                  
 	</body>
 </html>

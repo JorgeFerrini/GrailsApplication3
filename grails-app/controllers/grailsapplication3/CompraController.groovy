@@ -212,5 +212,14 @@ println("Document Closed")
         }
     
     
-    }    
+    }  
+    
+    def qr (Long id){
+        
+        session.mostrarQR = id
+       
+        
+    }
+    
+
 }

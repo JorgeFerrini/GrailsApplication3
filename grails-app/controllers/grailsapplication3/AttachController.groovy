@@ -21,6 +21,6 @@ class AttachController {
     //html '<a href="<g:createLinkTo dir="/WEB-INF" file="document${session.CompraPDF}.pdf" /> " ><img src="<g:createLinkTo dir="/images" file="LOGO_PDF.png" /> " /></a>'
 //C:/Users/vit/Documents/GitHub/GrailsApplication3
         }
-render "listoooo"
+redirect (controller: "Compra", action : "list")
 }
 }

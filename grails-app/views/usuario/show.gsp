@@ -78,27 +78,8 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${usuarioInstance?.calificaciones}">
-				<li class="fieldcontain">
-					<span id="calificaciones-label" class="property-label"><g:message code="usuario.calificaciones.label" default="Calificaciones" /></span>
-					
-						<g:each in="${usuarioInstance.calificaciones}" var="c">
-						<span class="property-value" aria-labelledby="calificaciones-label"><g:link controller="calificacion" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${usuarioInstance?.compras}">
-				<li class="fieldcontain">
-					<span id="compras-label" class="property-label"><g:message code="usuario.compras.label" default="Compras" /></span>
-					
-						<g:each in="${usuarioInstance.compras}" var="c">
-						<span class="property-value" aria-labelledby="compras-label"><g:link controller="compra" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
+
+
 			
 				<g:if test="${usuarioInstance?.fechaNacimientoUser}">
 				<li class="fieldcontain">
@@ -128,17 +109,7 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${usuarioInstance?.tarjetas}">
-				<li class="fieldcontain">
-					<span id="tarjetas-label" class="property-label"><g:message code="usuario.tarjetas.label" default="Tarjetas" /></span>
-					
-						<g:each in="${usuarioInstance.tarjetas}" var="t">
-						<span class="property-value" aria-labelledby="tarjetas-label"><g:link controller="tarjetacredito" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
+
 			
 			</ol>
 			<g:form>

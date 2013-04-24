@@ -62,5 +62,19 @@
 				</fieldset>
 			</g:form>
 		</div>
+                                                    <g:if test="${session.Usuario}">
+                  Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="${session.Usuario.id}">Mi perfil</g:link> | <g:link controller="Compra" action="list">Mis Compras</g:link> | <g:link controller="Tarjetacredito" action="list" max="5">Mis Tarjetas</g:link> | <g:link controller="Calificacion" action="listPorUsuario">Mis Calificaciones</g:link> | <g:link controller="Productos" action="showCarrito">Carrito:  (${session.Carrito.numeroProductos}) Productos</g:link>        
+                        
+                  
+                </g:if>
+                <g:else>                   
+                  
+                  No hay usuario en este momento
+                      <g:form controller="usuario" action="login" style="padding-left:200px"> 
+                          
+                        <div id="janrainEngageEmbed" controller="Usuario" ></div>
+                      </g:form>
+                      
+                </g:else>
 	</body>
 </html>

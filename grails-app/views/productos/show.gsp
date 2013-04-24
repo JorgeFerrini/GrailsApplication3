@@ -157,8 +157,7 @@
 		</div>
                 <div id="janrainEngageShare"><center><p>Comparte en Twitter! </p><img src="<g:createLinkTo dir="/images" file="tw.jpg" /> " /></center></div>
                 <g:if test="${session.Usuario}">
-                  Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="${session.Usuario.id}">Mi perfil</g:link> | <g:link controller="Productos" action="showCarrito">Mi Carrito</g:link>
-                  carrito:  ${session.Carrito.numeroProductos}
+                  Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="${session.Usuario.id}">Mi perfil</g:link> | <g:link controller="Compra" action="list">Mis Compras</g:link> | <g:link controller="Tarjetacredito" action="list" max="5">Mis Tarjetas</g:link> | <g:link controller="Calificacion" action="listPorUsuario">Mis Calificaciones</g:link> | <g:link controller="Productos" action="showCarrito">Carrito:  (${session.Carrito.numeroProductos}) Productos</g:link>        
                   
                        <g:form controller="Productos" action="addToCarrito">
                                 <g:hiddenField name="id" value="${productosInstance?.id}" />
@@ -168,7 +167,7 @@
                                 <g:select id="cantidad" name="cantidad" from="${2..9}" class="many-to-one" noSelection="['1': '1']"/>
                                                         
 				<fieldset class="buttons">
-					<g:submitButton name="addToCarrito" class="Productos" value="Buscar" />
+					<g:submitButton name="addToCarrito" class="Productos" value="Comprar" />
 				</fieldset>
 			</g:form>    
 

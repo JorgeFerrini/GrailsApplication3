@@ -153,7 +153,8 @@ class UsuarioController {
     }
     
 def janrainMobileSignIn () {
-    
+        session.ip= java.net.InetAddress.getLocalHost().getHostAddress()
+        println(session.ip)
         def apiKey = "cf9c4597fcf3b97fa63ae2a9e00376aabe63f1a7"
         def rpxnow = "https://rpxnow.com"
         def auth_info_url = new URL(

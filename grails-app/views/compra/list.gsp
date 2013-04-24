@@ -34,6 +34,8 @@
 						<th><g:message code="compra.tarjeta.label" default="Tarjeta" /></th>
 					
 						<th>Archivo PDF</th>
+                                                
+                                                <th>Codigo QR</th>
 					
 					</tr>
 				</thead>
@@ -51,6 +53,7 @@
 					
                                                 <td><a href="<g:createLinkTo dir="/WEB-INF" file="document${compraInstance.id}.pdf" /> " ><img src="<g:createLinkTo dir="/images" file="LOGO_PDF.png" /> " /></a></td>
                                                 
+                                                <td><g:link controller="Compra" action="qr" id="${compraInstance.id}"><img src="<g:createLinkTo dir="/images" file="qr.jpg" /> " /></g:link></>
 					</tr>
 				</g:each>
 				</tbody>
@@ -60,30 +63,20 @@
 			</div>
 		</div>
                 
-                <g:if test="${session.Usuario}">
-                  Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="${session.Usuario.id}">Mi perfil</g:link> | <g:link controller="Productos" action="showCarrito">Mi Carrito</g:link>
-                  carrito:  ${session.Carrito.numeroProductos}
+                                    <g:if test="${session.Usuario}">
+                  Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="${session.Usuario.id}">Mi perfil</g:link> | <g:link controller="Compra" action="list">Mis Compras</g:link> | <g:link controller="Tarjetacredito" action="list" max="5">Mis Tarjetas</g:link> | <g:link controller="Calificacion" action="listPorUsuario">Mis Calificaciones</g:link> | <g:link controller="Productos" action="showCarrito">Carrito:  (${session.Carrito.numeroProductos}) Productos</g:link>        
+                        
                   
-                       <g:form controller="Productos" action="addToCarrito">
-                                <g:hiddenField name="id" value="${productosInstance?.id}" />
-                                <g:hiddenField name="nombre" value="${productosInstance?.nombre}" />
-                                <g:hiddenField name="precio" value="${productosInstance?.precio}" />
-                                
-                                <g:select id="cantidad" name="cantidad" from="${2..9}" class="many-to-one" noSelection="['1': '1']"/>
-                                                        
-				<fieldset class="buttons">
-					<g:submitButton name="addToCarrito" class="Productos" value="Buscar" />
-				</fieldset>
-			</g:form>    
-
                 </g:if>
                 <g:else>                   
                   
                   No hay usuario en este momento
                       <g:form controller="usuario" action="login" style="padding-left:200px"> 
-                          <div id="janrainEngageEmbed" controller="Usuario" ></div>
-                      </g:form>                      
-                </g:else>        
+                          
+                        <div id="janrainEngageEmbed" controller="Usuario" ></div>
+                      </g:form>
+                      
+                </g:else>   
         
         
 	</body>

@@ -12,7 +12,7 @@ class EmailConfirmacionController {
             
             to session.Email            
             subject "Le Cloud Products"
-            body 'Bienvenido, usuario: '+usuarioInstance.nombreUser+' '+usuarioInstance.apellidoUser+'. Para confirmar su cuenta vaya al siguiente LINK: http://localhost:3306/GrailsApplication3/usuario/verificar/'+session.Id
+            body 'Bienvenido, usuario: '+usuarioInstance.nombreUser+' '+usuarioInstance.apellidoUser+'. Para confirmar su cuenta vaya al siguiente LINK: http://'+session.ip+':3306/GrailsApplication3/usuario/verificar/'+session.Id
            }
            session.Email= null
            println("Email Sent!")

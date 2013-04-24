@@ -14,7 +14,7 @@ class Calificacion {
     static constraints = {
         
     comentario (size:3..2500)
-    
+    valorCalificacion      (inList:[1,2,3,4,5])
     }
     
     

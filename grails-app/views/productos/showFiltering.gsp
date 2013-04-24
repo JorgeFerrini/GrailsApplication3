@@ -37,11 +37,11 @@
 					
 						<g:sortableColumn property="descripcion" title="${message(code: 'productos.descripcion.label', default: 'Descripcion')}" />
 					
-						<g:sortableColumn property="archivo" title="${message(code: 'productos.archivo.label', default: 'Archivo')}" />
+                                                <th>Imagenes</th>
 					
 						<th><g:message code="productos.categoria.label" default="Categoria" /></th>
 					
-						<g:sortableColumn property="directorio" title="${message(code: 'productos.directorio.label', default: 'Directorio')}" />
+						
 					
 						<g:sortableColumn property="precio" title="${message(code: 'productos.precio.label', default: 'Precio')}" />
 					
@@ -55,11 +55,11 @@
 					
 						<td>${fieldValue(bean: productosInstance, field: "descripcion")}</td>
 					
-						<td>${fieldValue(bean: productosInstance, field: "archivo")}</td>
+						<td><g:link controller="productos" action="show" id="${productosInstance.id}"><img src="<g:createLinkTo dir="${productosInstance.directorio}" file="${productosInstance.archivo}" /> " width="75" height="75"  /> </g:link></td>
 					
-						<td>${fieldValue(bean: productosInstance, field: "categoria")}</td>
+						<td>${productosInstance.categoria.nombre}</td>
 					
-						<td>${fieldValue(bean: productosInstance, field: "directorio")}</td>
+						
 					
 						<td>${fieldValue(bean: productosInstance, field: "precio")}</td>
 					
@@ -70,5 +70,19 @@
 			</table>
 			
 		</div>
+                                        <g:if test="${session.Usuario}">
+                  Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="${session.Usuario.id}">Mi perfil</g:link> | <g:link controller="Compra" action="list">Mis Compras</g:link> | <g:link controller="Tarjetacredito" action="list" max="5">Mis Tarjetas</g:link> | <g:link controller="Calificacion" action="listPorUsuario">Mis Calificaciones</g:link> | <g:link controller="Productos" action="showCarrito">Carrito:  (${session.Carrito.numeroProductos}) Productos</g:link>        
+                        
+                  
+                </g:if>
+                <g:else>                   
+                  
+                  No hay usuario en este momento
+                      <g:form controller="usuario" action="login" style="padding-left:200px"> 
+                          
+                        <div id="janrainEngageEmbed" controller="Usuario" ></div>
+                      </g:form>
+                      
+                </g:else>
   </body>
 </html>

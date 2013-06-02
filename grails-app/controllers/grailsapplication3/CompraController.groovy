@@ -12,6 +12,30 @@ import com.itextpdf.text.pdf.PdfWriter
 class CompraController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    
+        def rest = {
+        
+        switch (request.method){
+            
+            case 'GET': doGet(params)
+            break
+            case 'PUT': doPut(params)
+            break
+            case 'POST': doPost(params)
+            break
+              
+            
+        }
+        
+        
+    }
+    
+    private void doPost(params){
+        
+        
+    }
+    
+    
 
     def index() {
         redirect(action: "list", params: params)

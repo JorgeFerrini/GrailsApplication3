@@ -3,11 +3,87 @@ package grailsapplication3
 import org.springframework.dao.DataIntegrityViolationException
 import grailsapplication3.Carrito
 import grails.converters.*
+import grails.converters.XML
 
 class UsuarioController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+    def usuarioService
+    
+    def rest = {
+        
+        switch (request.method){
+            
+            case 'GET': doGet(params)
+            break
+            case 'PUT': doPut(params)
+            break
+            case 'POST': doPost(params)
+            break
+              
+            
+        }
+        
+        
+        
+    }
+    
+    private void doPut(params){
+        
+        def p = Usuario.get(params.id)
+        
+        p.properties = params.usuario
+        
+        if(p.save()){
+            
+                render p as XML
+            
+        }else{
+            
+            response.status = 500
+            render p.errors as XML
+            
+        }
+        
+    }
+    
+    private void doPost(params){
+        
+        def p = new Usuario()
+        def d = request.XML
+        String xml 
+        
+        
+        
+        p.nombreUser = d.nombreUser
+        usuarioService.imprimirAlgo(p.nombreUser)
+        p.apellidoUser = d.apellidoUser
+        usuarioService.imprimirAlgo(p.apellidoUser)
+        p.identificadorUser = d.identificadorUser
+        usuarioService.imprimirAlgo(p.identificadorUser)
+        p.tipoIdUser = d.tipoIdUser
+        usuarioService.imprimirAlgo(p.tipoIdUser)
+        p.emailUser = d.emailUser
+        usuarioService.imprimirAlgo(p.emailUser)
+        
+        p.fechaNacimientoUser = usuarioService.convertirFecha( d.fechaNacimientoUser)
+        
+        p.idGoogle = d.idGoogle 
+        usuarioService.imprimirAlgo(p.idGoogle)
+        
+        if (p.save()){
+            
+            render p as XML
+            usuarioService.leeXml(p.toString()) 
+        }else{
+            
+            response.status = 500
+            render p.errors as XML
+        }
+        
+    }
+    
+    
     def index() {
         redirect(action: "create", params: params)
     }
@@ -153,9 +229,10 @@ class UsuarioController {
     }
     
 def janrainMobileSignIn () {
+        usuarioService.imprimirAlgo()
         session.ip= java.net.InetAddress.getLocalHost().getHostAddress()
         println(session.ip)
-        def apiKey = "cf9c4597fcf3b97fa63ae2a9e00376aabe63f1a7"
+        def apiKey = "23aad57369dcde2d4123253ab185041084cf4f68"
         def rpxnow = "https://rpxnow.com"
         def auth_info_url = new URL(
             rpxnow + "/api/v2/auth_info?apiKey="

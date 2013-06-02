@@ -25,11 +25,11 @@
     e.id = 'janrainAuthWidget';
 
     if (document.location.protocol === 'https:') {
-      e.src = 'https://rpxnow.com/js/lib/desarrolloucab/engage.js';
+      e.src = 'https://rpxnow.com/js/lib/desarrollocarolina/engage.js';
     } else {
-      e.src = 'http://widget-cdn.rpxnow.com/js/lib/desarrolloucab/engage.js';
+      e.src = 'http://widget-cdn.rpxnow.com/js/lib/desarrollocarolina/engage.js';
     }
-    
+
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(e, s);
 })();
@@ -149,6 +149,7 @@ if (step==7)
 				
                                 <li><g:link controller="categoria" action="list">Categorias</g:link></li>
 				<li><g:link controller="productos" action="list">Productos</g:link></li>
+                                <li><g:link controller="mostrarDocumentacionAPI">Documentacion API</g:link></li>
 				
 			</ul>
 		</div>        

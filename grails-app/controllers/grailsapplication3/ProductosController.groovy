@@ -2,20 +2,97 @@ package grailsapplication3
 
 import org.springframework.dao.DataIntegrityViolationException
 import java.lang.*
+import grails.converters.XML
+import org.apache.commons.logging.*
 
 class ProductosController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    def productosService
     
+        def rest = {
+        switch (request.method){
+            case 'GET':
+                doGet(params)
+                break;
+            case 'POST':
+                doPost(params)
+                break;
+            case 'PUT':
+                doPut(params)
+                break;
+            case 'DELETE':
+                doDelete(params)
+                break;
+                
+        }
+    }
+    
+     def rest2 = {
+        switch (request.method){
+            case 'GET':
+                doGet2(params)
+                break;
+            case 'POST':
+                doPost(params)
+                break;
+            case 'PUT':
+                doPut(params)
+                break;
+            case 'DELETE':
+                doDelete(params)
+                break;
+                
+        }
+    }
+    
+    private static Log log = LogFactory.getLog("bitacora."+ProductosController.class.getName())
+
+    
+ private void doGet(params) {
+        
+        //def productosInstanceList
+        //def p = Productos.get(params.id)
+        //def p = Productos.findAllByNombreIlike(params.id)
+        def p = productosService.buscandoProductos(params.id)
+        //productosService.imprimeCualquierVaina()
+        //def p = Productos.findAllByIdIlike(params.id)
+        //def p = productosService.busquedaProducto(16)
+        println(p)
+            
+            render p as XML
+            //render p as XML
+            
+        productosService.actualizarRuta(p)
+    }
+    
+        
+    private void doGet2(params) {
+        
+        //def productosInstanceList
+        //def p = Productos.get(params.id)
+        //def p = Productos.findAllByNombreIlike(params.id)
+        def c = productosService.CantidadPaginas(params.id)
+        //def p = productosService.buscandoProductos(params.id)
+        //productosService.imprimeCualquierVaina()
+        //def p = Productos.findAllByIdIlike(params.id)
+        //def p = productosService.busquedaProducto(16)
+        render c 
+    }
     
 
     def index() {
+        
         redirect(action: "list", params: params)
+        
+        
     }
 
     def list(Integer max) {
+        log.error("Hay un error con un producto")
         params.max = Math.min(max ?: 10, 100)
         [productosInstanceList: Productos.list(params), productosInstanceTotal: Productos.count()]
+        
     }
 
     def create() {
@@ -26,7 +103,7 @@ class ProductosController {
         def productosInstance = new Productos(params)
         if (!productosInstance.save(flush: true)) {
             render(view: "create", model: [productosInstance: productosInstance])
-            return
+            return 
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'productos.label', default: 'Productos'), productosInstance.id])

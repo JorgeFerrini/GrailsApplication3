@@ -7,7 +7,8 @@ import  grailsapplication3.Usuario
 class CalificacionController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+    def calificacionService 
+    
     def index() {
         redirect(action: "list", params: params)
     }
@@ -24,6 +25,7 @@ class CalificacionController {
         [calificacionInstance: new Calificacion(params)]
     }
 
+
     def save() {
         
         params.producto = session.ProductoComentario
@@ -31,15 +33,22 @@ class CalificacionController {
         def calificacionInstance = new Calificacion(params)
         println("el id del usuario es "+session.Usuario )
         println("el id del usuario es "+session.ProductoComentario )
-        if (!calificacionInstance.save(flush: true)) {
+        
+        if (!(calificacionService.guardarCalificacion(calificacionInstance))){
             render(view: "create", model: [calificacionInstance: calificacionInstance])
             return
+            
         }
+        
+//        if (!calificacionInstance.save(flush: true)) {
+//            render(view: "create", model: [calificacionInstance: calificacionInstance])
+//            return
+//        }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'calificacion.label', default: 'Calificacion'), calificacionInstance.id])
         redirect(action: "show", id: calificacionInstance.id)
     }
-
+    
     def show(Long id) {
         def calificacionInstance = Calificacion.get(id)
         if (!calificacionInstance) {

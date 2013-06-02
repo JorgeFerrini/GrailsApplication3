@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="1" hostname="CZHiller-PC" name="grailsapplication3.CalificacionServiceTests" tests="2" time="1.54" timestamp="2013-06-02T22:54:53">
+  <properties />
+  <testcase classname="grailsapplication3.CalificacionServiceTests" name="testSomething" time="1.381" />
+  <testcase classname="grailsapplication3.CalificacionServiceTests" name="testSomethingWrong" time="0.127">
+    <failure message="junit.framework.AssertionFailedError" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError
+	at grailsapplication3.CalificacionServiceTests.testSomethingWrong(CalificacionServiceTests.groovy:57)
+</failure>
+  </testcase>
+  <system-out><![CDATA[--Output from testSomething--
+12/03/2013
+--Output from testSomethingWrong--
+12/03/2013
+]]></system-out>
+  <system-err><![CDATA[--Output from testSomething--
+--Output from testSomethingWrong--
+]]></system-err>
+</testsuite>

@@ -1,16 +1,21 @@
 package grailsapplication3
 
 import org.springframework.dao.DataIntegrityViolationException
+import org.apache.commons.logging.*
 
 class CategoriaController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    private static Log log = LogFactory.getLog("bitacora."+CategoriaController.class.getName())
 
     def index() {
         redirect(action: "list", params: params)
+        
+        
     }
 
     def list(Integer max) {
+        log.info "Listado de Categoria"
         params.max = Math.min(max ?: 10, 100)
         [categoriaInstanceList: Categoria.list(params), categoriaInstanceTotal: Categoria.count()]
     }

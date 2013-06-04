@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="1" hostname="CZHiller-PC" name="grailsapplication3.CalificacionServiceTests" tests="2" time="1.54" timestamp="2013-06-02T22:54:53">
+<testsuite errors="0" failures="1" hostname="CZHiller-PC" name="grailsapplication3.CalificacionServiceTests" tests="2" time="1.617" timestamp="2013-06-04T19:09:15">
   <properties />
-  <testcase classname="grailsapplication3.CalificacionServiceTests" name="testSomething" time="1.381" />
-  <testcase classname="grailsapplication3.CalificacionServiceTests" name="testSomethingWrong" time="0.127">
+  <testcase classname="grailsapplication3.CalificacionServiceTests" name="testSomething" time="1.42" />
+  <testcase classname="grailsapplication3.CalificacionServiceTests" name="testSomethingWrong" time="0.173">
     <failure message="junit.framework.AssertionFailedError" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError
 	at grailsapplication3.CalificacionServiceTests.testSomethingWrong(CalificacionServiceTests.groovy:57)
 </failure>

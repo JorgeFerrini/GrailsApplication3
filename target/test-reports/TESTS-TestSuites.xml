@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="1" hostname="CZHiller-PC" id="0" name="CalificacionServiceTests" package="grailsapplication3" tests="2" time="1.54" timestamp="2013-06-02T22:54:53">
+  <testsuite errors="0" failures="1" hostname="CZHiller-PC" id="0" name="CalificacionServiceTests" package="grailsapplication3" tests="2" time="1.617" timestamp="2013-06-04T19:09:15">
       <properties />
 
-      <testcase classname="grailsapplication3.CalificacionServiceTests" name="testSomething" time="1.381" />
+      <testcase classname="grailsapplication3.CalificacionServiceTests" name="testSomething" time="1.42" />
 
-      <testcase classname="grailsapplication3.CalificacionServiceTests" name="testSomethingWrong" time="0.127">
+      <testcase classname="grailsapplication3.CalificacionServiceTests" name="testSomethingWrong" time="0.173">
           <failure message="junit.framework.AssertionFailedError" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError
 	at grailsapplication3.CalificacionServiceTests.testSomethingWrong(CalificacionServiceTests.groovy:57)
 </failure>
@@ -20,6 +20,42 @@
 
       <system-err><![CDATA[--Output from testSomething--
 --Output from testSomethingWrong--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="1" failures="1" hostname="CZHiller-PC" id="1" name="ProductosServiceTests" package="grailsapplication3" tests="3" time="0.332" timestamp="2013-06-04T19:09:16">
+      <properties />
+
+      <testcase classname="grailsapplication3.ProductosServiceTests" name="testSomething" time="0.226" />
+
+      <testcase classname="grailsapplication3.ProductosServiceTests" name="testSomethingWrong" time="0.061">
+          <error message="Cannot invoke method size() on null object" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke method size() on null object
+	at grailsapplication3.ProductosService.buscandoProductos(ProductosService.groovy:148)
+	at grailsapplication3.ProductosServiceTests.testSomethingWrong(ProductosServiceTests.groovy:39)
+</error>
+
+      </testcase>
+
+      <testcase classname="grailsapplication3.ProductosServiceTests" name="testSomethingWrong2" time="0.034">
+          <failure message="junit.framework.AssertionFailedError" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError
+	at grailsapplication3.ProductosServiceTests.testSomethingWrong2(ProductosServiceTests.groovy:54)
+</failure>
+
+      </testcase>
+
+      <system-out><![CDATA[--Output from testSomething--
+[gps]
+la cantidad de paginas es :1
+--Output from testSomethingWrong--
+[&^%#@#(*@@#!]
+--Output from testSomethingWrong2--
+[gps]
+la cantidad de paginas es :1
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+--Output from testSomethingWrong--
+--Output from testSomethingWrong2--
 ]]></system-err>
 
   </testsuite>

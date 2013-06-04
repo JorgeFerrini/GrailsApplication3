@@ -1,5 +1,5 @@
 Testsuite: grailsapplication3.CalificacionServiceTests
-Tests run: 2, Failures: 1, Errors: 0, Time elapsed: 1,54 sec
+Tests run: 2, Failures: 1, Errors: 0, Time elapsed: 1,617 sec
 ------------- Standard Output ---------------
 --Output from testSomething--
 12/03/2013
@@ -11,8 +11,8 @@ Tests run: 2, Failures: 1, Errors: 0, Time elapsed: 1,54 sec
 --Output from testSomethingWrong--
 ------------- ---------------- ---------------
 
-Testcase: testSomething took 1,381 sec
-Testcase: testSomethingWrong took 0,127 sec
+Testcase: testSomething took 1,42 sec
+Testcase: testSomethingWrong took 0,172 sec
 	FAILED
 junit.framework.AssertionFailedError
 junit.framework.AssertionFailedError: junit.framework.AssertionFailedError

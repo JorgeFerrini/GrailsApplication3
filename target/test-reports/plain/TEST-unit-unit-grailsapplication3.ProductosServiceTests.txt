@@ -1,0 +1,32 @@
+Testsuite: grailsapplication3.ProductosServiceTests
+Tests run: 3, Failures: 1, Errors: 1, Time elapsed: 0,332 sec
+------------- Standard Output ---------------
+--Output from testSomething--
+[gps]
+la cantidad de paginas es :1
+--Output from testSomethingWrong--
+[&^%#@#(*@@#!]
+--Output from testSomethingWrong2--
+[gps]
+la cantidad de paginas es :1
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testSomething--
+--Output from testSomethingWrong--
+--Output from testSomethingWrong2--
+------------- ---------------- ---------------
+
+Testcase: testSomething took 0,226 sec
+Testcase: testSomethingWrong took 0,061 sec
+	Caused an ERROR
+Cannot invoke method size() on null object
+java.lang.NullPointerException: Cannot invoke method size() on null object
+	at grailsapplication3.ProductosService.buscandoProductos(ProductosService.groovy:148)
+	at grailsapplication3.ProductosServiceTests.testSomethingWrong(ProductosServiceTests.groovy:39)
+
+Testcase: testSomethingWrong2 took 0,034 sec
+	FAILED
+junit.framework.AssertionFailedError
+junit.framework.AssertionFailedError: junit.framework.AssertionFailedError
+	at grailsapplication3.ProductosServiceTests.testSomethingWrong2(ProductosServiceTests.groovy:54)
+

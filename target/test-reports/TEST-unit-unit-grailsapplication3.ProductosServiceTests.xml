@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="1" failures="1" hostname="CZHiller-PC" name="grailsapplication3.ProductosServiceTests" tests="3" time="0.332" timestamp="2013-06-04T19:09:16">
+  <properties />
+  <testcase classname="grailsapplication3.ProductosServiceTests" name="testSomething" time="0.226" />
+  <testcase classname="grailsapplication3.ProductosServiceTests" name="testSomethingWrong" time="0.061">
+    <error message="Cannot invoke method size() on null object" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke method size() on null object
+	at grailsapplication3.ProductosService.buscandoProductos(ProductosService.groovy:148)
+	at grailsapplication3.ProductosServiceTests.testSomethingWrong(ProductosServiceTests.groovy:39)
+</error>
+  </testcase>
+  <testcase classname="grailsapplication3.ProductosServiceTests" name="testSomethingWrong2" time="0.034">
+    <failure message="junit.framework.AssertionFailedError" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError
+	at grailsapplication3.ProductosServiceTests.testSomethingWrong2(ProductosServiceTests.groovy:54)
+</failure>
+  </testcase>
+  <system-out><![CDATA[--Output from testSomething--
+[gps]
+la cantidad de paginas es :1
+--Output from testSomethingWrong--
+[&^%#@#(*@@#!]
+--Output from testSomethingWrong2--
+[gps]
+la cantidad de paginas es :1
+]]></system-out>
+  <system-err><![CDATA[--Output from testSomething--
+--Output from testSomethingWrong--
+--Output from testSomethingWrong2--
+]]></system-err>
+</testsuite>

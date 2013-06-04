@@ -147,9 +147,10 @@ class ProductosService {
         //cantidad de paginas
         division = productosInstanceList.size()/numeroMaximoProductos
         residuo  = productosInstanceList.size()%numeroMaximoProductos
-        
+        if (residuo != 0)
         residuo++
-        
+        else if (division==0)
+        return productosInstanceList
         //println"el resultado de la division es: "+division
         //println"el resultado del residuo es: "+residuo
         
@@ -370,7 +371,7 @@ class ProductosService {
         
         division = productosInstanceList.size()/numeroMaximoProductos
         residuo  = productosInstanceList.size()%numeroMaximoProductos
-        
+        if (residuo != 0)
         residuo++
         
         //println"el resultado de la division es: "+division

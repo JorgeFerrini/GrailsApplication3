@@ -6,11 +6,12 @@ import grails.converters.XML
 import org.apache.commons.logging.*
 
 class ProductosController {
-
+    private static Log log = LogFactory.getLog("bitacora."+ProductosController.class.getName())
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
     def productosService
     
         def rest = {
+        log.info("Definicion de metodos del webservice para busqueda de productos")
         switch (request.method){
             case 'GET':
                 doGet(params)
@@ -29,6 +30,7 @@ class ProductosController {
     }
     
      def rest2 = {
+         log.info("Definicion de metodos del webservice para cantidad de paginas")
         switch (request.method){
             case 'GET':
                 doGet2(params)
@@ -46,11 +48,11 @@ class ProductosController {
         }
     }
     
-    private static Log log = LogFactory.getLog("bitacora."+ProductosController.class.getName())
+    
 
     
  private void doGet(params) {
-        
+        log.info("Devuelve el XML con la busqueda de productos")
         //def productosInstanceList
         //def p = Productos.get(params.id)
         //def p = Productos.findAllByNombreIlike(params.id)
@@ -68,7 +70,7 @@ class ProductosController {
     
         
     private void doGet2(params) {
-        
+        log.info("Devuelve el XML con la cantidad de paginas")
         //def productosInstanceList
         //def p = Productos.get(params.id)
         //def p = Productos.findAllByNombreIlike(params.id)

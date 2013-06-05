@@ -149,8 +149,8 @@ if (step==7)
 				
                                 <li><g:link controller="categoria" action="list">Categorias</g:link></li>
 				<li><g:link controller="productos" action="list">Productos</g:link></li>
-                                <li><g:link controller="mostrarDocumentacionAPI">Documentacion API</g:link></li>
-				
+                                <li><a href="<g:createLinkTo dir="/WEB-INF" file="docAPI.docx" /> " >Documentacion API</a></li>
+				 
 			</ul>
 		</div>        
 		

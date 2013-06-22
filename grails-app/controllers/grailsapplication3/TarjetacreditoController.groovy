@@ -108,4 +108,9 @@ class TarjetacreditoController {
         [tarjetacreditoInstanceList: Tarjetacredito.findAllByUsuario(session.Usuario), tarjetacreditoInstanceTotal: Tarjetacredito.count()]
     }
     
+    def mshowTarjetasCompras(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        [tarjetacreditoInstanceList: Tarjetacredito.findAllByUsuario(session.Usuario), tarjetacreditoInstanceTotal: Tarjetacredito.count()]
+    }
+    
 }

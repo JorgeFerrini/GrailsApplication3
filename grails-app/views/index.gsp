@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+       
         
 <script type="text/javascript">
 (function() {
@@ -141,14 +142,16 @@ if (step==7)
 		<g:set var="entityName" value="${message(code: 'categoria.label', default: 'Categoria')}" />
                                 
 	</head>
-	<body onLoad="autoImgFlip();">                
+	<body onLoad="autoImgFlip();">  
+          
+                <browser:isMobile>Puedes Visitar Nuestra Version Movil desde<g:link controller="categoria" action="mlist">Aqui</g:link></browser:isMobile>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
                        
                 <div class="nav" role="navigation">
 			<ul>
 				
                                 <li><g:link controller="categoria" action="list">Categorias</g:link></li>
-				<li><g:link controller="productos" action="list">Productos</g:link></li>
+				<li><g:link controller="productos" action="list">Productos</g:link></li>                                
                                 <li><a href="<g:createLinkTo dir="/WEB-INF" file="docAPI.docx" /> " >Documentacion API</a></li>
 				 
 			</ul>
@@ -182,7 +185,11 @@ if (step==7)
                   No hay usuario en este momento
                       <g:form controller="usuario" action="login" style="padding-left:200px"> 
                           
-                        <div id="janrainEngageEmbed" controller="Usuario" ></div>
+                        <!--<div id="janrainEngageEmbed" controller="Usuario" ></div>-->
+                        <g:hiddenField name="username" value="jorgeferrinia@gmail.com" />
+                        <fieldset class="buttons">
+					<g:submitButton name="addToCarrito" class="Productos" value="Comprar" />
+				</fieldset>
                       </g:form>
                       
                 </g:else>

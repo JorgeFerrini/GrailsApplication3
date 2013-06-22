@@ -200,6 +200,7 @@ class UsuarioController {
             flash.message2 = "login succeed"
             session.Usuario = usuarioInstance
             session.Carrito = carritoInstance
+            session.ip= java.net.InetAddress.getLocalHost().getHostAddress()
 //            if (!carritoInstance){
 //                
 //                println "esta vaina no esta haciendo el new"

@@ -68,6 +68,7 @@
                                 
 				</tbody>
 			</table>
+
 			
 		</div>
                                         <g:if test="${session.Usuario}">

@@ -31,9 +31,7 @@
 					
                                                 <th>Imagen</th>
 					
-						<th><g:message code="productos.categoria.label" default="Categoria" /></th>
-					
-						
+						<th><g:message code="productos.categoria.label" default="Categoria" /></th>					
 					
 						<g:sortableColumn property="precio" title="${message(code: 'productos.precio.label', default: 'Precio')}" />
 					
@@ -59,11 +57,13 @@
 				</g:each>
 				</tbody>
 			</table>
+                        
+                        
 			<div class="pagination">
 				<g:paginate total="${productosInstanceTotal}" />
 			</div>
 		</div>
-                                                    <g:if test="${session.Usuario}">
+                <g:if test="${session.Usuario}">
                   Login as: ${session.Usuario.nombreUser} | <g:link controller="Usuario" action="logOut">Logout</g:link> | <g:link controller="Usuario" action="show" id="${session.Usuario.id}">Mi perfil</g:link> | <g:link controller="Compra" action="list">Mis Compras</g:link> | <g:link controller="Tarjetacredito" action="list" max="5">Mis Tarjetas</g:link> | <g:link controller="Calificacion" action="listPorUsuario">Mis Calificaciones</g:link> | <g:link controller="Productos" action="showCarrito">Carrito:  (${session.Carrito.numeroProductos}) Productos</g:link>        
                         
                   

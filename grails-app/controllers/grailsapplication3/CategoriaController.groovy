@@ -19,6 +19,12 @@ class CategoriaController {
         params.max = Math.min(max ?: 10, 100)
         [categoriaInstanceList: Categoria.list(params), categoriaInstanceTotal: Categoria.count()]
     }
+    
+    def mlist(Integer max) {
+        log.info "Listado de Categoria"
+        params.max = Math.min(max ?: 10, 100)
+        [categoriaInstanceList: Categoria.list(params), categoriaInstanceTotal: Categoria.count()]
+    }
 
     def create() {
         [categoriaInstance: new Categoria(params)]
@@ -36,6 +42,17 @@ class CategoriaController {
     }
 
     def show(Long id) {
+        def categoriaInstance = Categoria.get(id)
+        if (!categoriaInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'categoria.label', default: 'Categoria'), id])
+            redirect(action: "list")
+            return
+        }
+
+        [categoriaInstance: categoriaInstance]
+    }
+    
+    def mshow(Long id) {
         def categoriaInstance = Categoria.get(id)
         if (!categoriaInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'categoria.label', default: 'Categoria'), id])

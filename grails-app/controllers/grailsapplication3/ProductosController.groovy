@@ -97,6 +97,13 @@ class ProductosController {
         [productosInstanceList: Productos.list(params), productosInstanceTotal: Productos.count()]
         
     }
+    
+    def mlist(Integer max) {
+        log.error("Hay un error con un producto")
+        params.max = Math.min(max ?: 10, 100)
+        [productosInstanceList: Productos.list(params), productosInstanceTotal: Productos.count()]
+        
+    }
 
     def create() {
         [productosInstance: new Productos(params)]
@@ -124,16 +131,29 @@ class ProductosController {
         [productosInstance: productosInstance]
     }
     
+    def mshow(Long id) {
+        def productosInstance = Productos.get(id)
+        if (!productosInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'productos.label', default: 'Productos'), id])
+            redirect(action: "list")
+            return
+        }
+
+        [productosInstance: productosInstance]
+    }
     
-    def showFiltering(String nombre) {
+    
+    def showFiltering(Integer max) {
         
-                       
+        //params.max = Math.min(max ?: 10, 100)   
+        def nombre = params.nombre
         println("prueba"+nombre)        
         String palabraClave1
         String palabraClave2
         String palabraClave3
         def list
         def productosInstanceList        
+        def productosInstanceList2
         
         list = [null,null,null]        
        
@@ -149,9 +169,11 @@ class ProductosController {
             
             palabraClave2 = list[1]
             palabraClave1 = list[0]
-            productosInstanceList = Productos.findAllByNombreIlikeOrNombreIlike("%"+palabraClave1+"%"+palabraClave2+"%"+palabraClave3+"%",
+            productosInstanceList2 = Productos.findAllByNombreIlikeOrNombreIlike("%"+palabraClave1+"%"+palabraClave2+"%"+palabraClave3+"%",
             "%"+palabraClave1+"%"+palabraClave3+"%"+palabraClave2+"%")
-
+            productosInstanceList = Productos.findAllByNombreIlikeOrNombreIlike("%"+palabraClave1+"%"+palabraClave2+"%"+palabraClave3+"%",
+            "%"+palabraClave1+"%"+palabraClave3+"%"+palabraClave2+"%", params)
+            
         }catch(Throwable e){
             
             println("no se tiene la 3")
@@ -160,9 +182,9 @@ class ProductosController {
             println("se tiene la 1 y 2")
             palabraClave2 = list[1]
             palabraClave1 = list[0]
+            productosInstanceList2 = Productos.findAllByNombreIlikeOrNombreIlike("%"+palabraClave1+"%"+palabraClave2+"%","%"+palabraClave2+"%"+palabraClave1+"%")
+            productosInstanceList = Productos.findAllByNombreIlikeOrNombreIlike("%"+palabraClave1+"%"+palabraClave2+"%","%"+palabraClave2+"%"+palabraClave1+"%", params)
             
-            productosInstanceList = Productos.findAllByNombreIlikeOrNombreIlike("%"+palabraClave1+"%"+palabraClave2+"%","%"+palabraClave2+"%"+palabraClave1+"%")
-                
             }
             catch(Throwable e2){
                 println("no se tiene la 2")
@@ -170,8 +192,9 @@ class ProductosController {
                     
                     println("se tiene la 1")
                     palabraClave1 = list[0]
-                    productosInstanceList = Productos.findAllByNombreIlike("%"+palabraClave1+"%")
-                    
+                    productosInstanceList2 = Productos.findAllByNombreIlike("%"+palabraClave1+"%")
+                    productosInstanceList = Productos.findAllByNombreIlike("%"+palabraClave1+"%", params)
+                   
                 }
                 catch(Throwable e3){
                     
@@ -186,8 +209,8 @@ class ProductosController {
         
         //render(template="Productos" ,view: "showFiltering.gsp", "prueba aklanklANSLA")
         
-        
         [productosInstanceList: productosInstanceList]
+        //[productosInstanceList: productosInstanceList.asList() , productosInstanceTotal: productosInstanceList2.size() ]
         //render(view: "showFiltering", model: [productosInstanceList: productosInstanceList])            
     }
     
@@ -277,6 +300,32 @@ class ProductosController {
         
     }
     
+    def addToCarritom (Integer id, String nombre, Long precio, Long cantidad){
+        
+        println("valor del id: " +id)
+        println("valor del nombre " +nombre)
+        println("valor del precio "+ precio)
+        println("valor de la cantidad "+cantidad)
+        
+        String respuestaCarrito = true
+        
+        //def carritoInstance = new Carrito()
+        
+        //carritoInstance.agregarCarrito(id,nombre,precio,cantidad)
+        respuestaCarrito = session.Carrito.agregarCarrito(id,nombre,precio,cantidad)
+        
+        println("estos son los id de los productos"+session.Carrito.idProductos)
+        if(respuestaCarrito){
+            
+            redirect(action: "mshow", id: id)
+        }else{
+            
+            redirect(action: "mshow", id: id)            
+        }
+        
+        
+    }
+    
     def removeCarrito (Integer id){
         
         String respuestaCarrito = true
@@ -294,10 +343,32 @@ class ProductosController {
         
     }
     
+        def mremoveCarrito (Integer id){
+        
+        String respuestaCarrito = true
+        
+        respuestaCarrito = session.Carrito.elimarDeCarrito(id)
+        
+        if (respuestaCarrito){
+            
+            redirect (action: "mshowCarrito")
+        }else{
+            
+            redirect (action: "mshowCarrito")            
+            
+        }
+        
+    }
+    
     
     
     def showCarrito(){
         
         render (view: "showCarrito")
+    }
+    
+    def mshowCarrito(){
+        
+        render (view: "mshowCarrito")
     }
 }

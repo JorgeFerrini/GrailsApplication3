@@ -40,6 +40,17 @@ class CarritoController {
 
         [carritoInstance: carritoInstance]
     }
+    
+    def mshow(Long id) {
+        def carritoInstance = Carrito.get(id)
+        if (!carritoInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'carrito.label', default: 'Carrito'), id])
+            redirect(action: "list")
+            return
+        }
+
+        [carritoInstance: carritoInstance]
+    }
 
     def edit(Long id) {
         def carritoInstance = Carrito.get(id)

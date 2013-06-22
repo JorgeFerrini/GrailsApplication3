@@ -79,8 +79,8 @@ class ProductosController {
         //productosService.imprimeCualquierVaina()
         //def p = Productos.findAllByIdIlike(params.id)
         //def p = productosService.busquedaProducto(16)
-        c = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <paginas>"+c+"</paginas>"
-        render c 
+      //  c = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <paginas>"+c+"</paginas>"
+        render (text:"<paginas>"+c+"</paginas>",contentType:"text/xml",enconding:"UTF-8") as XML
     }
     
 

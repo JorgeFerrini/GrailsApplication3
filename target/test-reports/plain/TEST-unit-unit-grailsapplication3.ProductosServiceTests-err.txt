@@ -1,3 +1,0 @@
---Output from testSomething--
---Output from testSomethingWrong--
---Output from testSomethingWrong2--

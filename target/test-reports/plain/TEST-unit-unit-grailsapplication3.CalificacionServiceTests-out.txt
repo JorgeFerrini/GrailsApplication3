@@ -1,4 +1,0 @@
---Output from testSomething--
-12/03/2013
---Output from testSomethingWrong--
-12/03/2013

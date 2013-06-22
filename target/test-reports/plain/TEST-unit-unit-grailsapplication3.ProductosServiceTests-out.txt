@@ -1,8 +1,0 @@
---Output from testSomething--
-[gps]
-la cantidad de paginas es :1
---Output from testSomethingWrong--
-[&^%#@#(*@@#!]
---Output from testSomethingWrong2--
-[gps]
-la cantidad de paginas es :1

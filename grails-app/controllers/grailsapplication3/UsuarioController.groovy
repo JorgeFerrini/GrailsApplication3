@@ -323,5 +323,56 @@ def janrainMobileSignIn () {
             
         
         }
+        
+        def mInicio (){
+               
+        
+        }
+        
+        def mlogin (){
+        
+        def usuarioInstance = Usuario.findByEmailUserAndPassword(params.username,params.password)
+        
+        
+        
+        def carritoInstance = new Carrito()
+        
+        if (usuarioInstance) {
+            
+            flash.message2 = "login succeed"
+            session.Usuario = usuarioInstance
+            session.Carrito = carritoInstance
+            session.ip= java.net.InetAddress.getLocalHost().getHostAddress()
+//            if (!carritoInstance){
+//                
+//                println "esta vaina no esta haciendo el new"
+//            }else{
+//                carritoInstance.agregarCarrito(1,"prueba",450)
+//                carritoInstance.agregarCarrito(2,"prueba",450)
+//                session.Carrito = carritoInstance
+//                println "DE BOLAS Q ENTRO"
+//                
+//            }
+            session.Inicio = 0;
+            println("AQUIIII")
+            
+        } else{
+            println("AQUIIII2")
+            flash.message2 = "login failed"
+            session.Inicio = 1;
+            redirect ( controller: "Usuario", action: "mInicio")
+        }
+        
+        
+    }
+    
+    def mlogOut(){
+        
+        session.Usuario = null
+        session.Carrito = null
+        redirect( controller : "Usuario", action:"mInicio")
+        
+        
+    }
     
 }

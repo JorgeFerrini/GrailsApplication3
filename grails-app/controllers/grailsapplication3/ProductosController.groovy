@@ -208,6 +208,148 @@ class ProductosController {
         }        
         
         //render(template="Productos" ,view: "showFiltering.gsp", "prueba aklanklANSLA")
+        if (productosInstanceList.size() != 0){
+            
+            [productosInstanceList: productosInstanceList]
+            
+        }else{
+            
+            render("no hay productos asociados a este criterio de busqueda")
+            //con este codigo debes buscar de nuevo o sea solo cuando retorne true de la otra funcion ps si retorna false devuelves esto -> [productosInstanceList: productosInstanceList]
+//            def nombre = params.nombre
+//        println("prueba"+nombre)        
+//        String palabraClave1
+//        String palabraClave2
+//        String palabraClave3
+//        def list
+//        def productosInstanceList        
+//        def productosInstanceList2
+//        
+//        list = [null,null,null]        
+//       
+//        if(nombre != null){            
+//            list = nombre.split(' ')            
+//            println(list)            
+//        }       
+//        
+//        
+//        try{
+//            println("se tiene todas")
+//            palabraClave3 = list[2]
+//            
+//            palabraClave2 = list[1]
+//            palabraClave1 = list[0]
+//            productosInstanceList2 = Productos.findAllByNombreIlikeOrNombreIlike("%"+palabraClave1+"%"+palabraClave2+"%"+palabraClave3+"%",
+//            "%"+palabraClave1+"%"+palabraClave3+"%"+palabraClave2+"%")
+//            productosInstanceList = Productos.findAllByNombreIlikeOrNombreIlike("%"+palabraClave1+"%"+palabraClave2+"%"+palabraClave3+"%",
+//            "%"+palabraClave1+"%"+palabraClave3+"%"+palabraClave2+"%", params)
+//            
+//        }catch(Throwable e){
+//            
+//            println("no se tiene la 3")
+//            try{
+//                
+//            println("se tiene la 1 y 2")
+//            palabraClave2 = list[1]
+//            palabraClave1 = list[0]
+//            productosInstanceList2 = Productos.findAllByNombreIlikeOrNombreIlike("%"+palabraClave1+"%"+palabraClave2+"%","%"+palabraClave2+"%"+palabraClave1+"%")
+//            productosInstanceList = Productos.findAllByNombreIlikeOrNombreIlike("%"+palabraClave1+"%"+palabraClave2+"%","%"+palabraClave2+"%"+palabraClave1+"%", params)
+//            
+//            }
+//            catch(Throwable e2){
+//                println("no se tiene la 2")
+//                try{
+//                    
+//                    println("se tiene la 1")
+//                    palabraClave1 = list[0]
+//                    productosInstanceList2 = Productos.findAllByNombreIlike("%"+palabraClave1+"%")
+//                    productosInstanceList = Productos.findAllByNombreIlike("%"+palabraClave1+"%", params)
+//                   
+//                }
+//                catch(Throwable e3){
+//                    
+//                    println("no se tienen ninguna kjshdaksjhdkas")
+//                    
+//                }                
+//                
+//            }
+//            
+//            
+//        }
+            
+        }
+        
+        
+        //[productosInstanceList: productosInstanceList.asList() , productosInstanceTotal: productosInstanceList2.size() ]
+        //render(view: "showFiltering", model: [productosInstanceList: productosInstanceList])            
+    }
+    
+    
+    def mshowFiltering(Integer max) {
+        
+        //params.max = Math.min(max ?: 10, 100)   
+        def nombre = params.nombre
+        println("prueba"+nombre)        
+        String palabraClave1
+        String palabraClave2
+        String palabraClave3
+        def list
+        def productosInstanceList        
+        def productosInstanceList2
+        
+        list = [null,null,null]        
+       
+        if(nombre != null){            
+            list = nombre.split(' ')            
+            println(list)            
+        }       
+        
+        
+        try{
+            println("se tiene todas")
+            palabraClave3 = list[2]
+            
+            palabraClave2 = list[1]
+            palabraClave1 = list[0]
+            productosInstanceList2 = Productos.findAllByNombreIlikeOrNombreIlike("%"+palabraClave1+"%"+palabraClave2+"%"+palabraClave3+"%",
+            "%"+palabraClave1+"%"+palabraClave3+"%"+palabraClave2+"%")
+            productosInstanceList = Productos.findAllByNombreIlikeOrNombreIlike("%"+palabraClave1+"%"+palabraClave2+"%"+palabraClave3+"%",
+            "%"+palabraClave1+"%"+palabraClave3+"%"+palabraClave2+"%", params)
+            
+        }catch(Throwable e){
+            
+            println("no se tiene la 3")
+            try{
+                
+            println("se tiene la 1 y 2")
+            palabraClave2 = list[1]
+            palabraClave1 = list[0]
+            productosInstanceList2 = Productos.findAllByNombreIlikeOrNombreIlike("%"+palabraClave1+"%"+palabraClave2+"%","%"+palabraClave2+"%"+palabraClave1+"%")
+            productosInstanceList = Productos.findAllByNombreIlikeOrNombreIlike("%"+palabraClave1+"%"+palabraClave2+"%","%"+palabraClave2+"%"+palabraClave1+"%", params)
+            
+            }
+            catch(Throwable e2){
+                println("no se tiene la 2")
+                try{
+                    
+                    println("se tiene la 1")
+                    palabraClave1 = list[0]
+                    productosInstanceList2 = Productos.findAllByNombreIlike("%"+palabraClave1+"%")
+                    productosInstanceList = Productos.findAllByNombreIlike("%"+palabraClave1+"%", params)
+                   
+                }
+                catch(Throwable e3){
+                    
+                    println("no se tienen ninguna kjshdaksjhdkas")
+                    
+                }                
+                
+            }
+            
+            
+        }        
+        
+        //render(template="Productos" ,view: "showFiltering.gsp", "prueba aklanklANSLA")
         
         [productosInstanceList: productosInstanceList]
         //[productosInstanceList: productosInstanceList.asList() , productosInstanceTotal: productosInstanceList2.size() ]

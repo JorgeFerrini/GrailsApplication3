@@ -10,7 +10,8 @@ class Usuario {
     Date   fechaNacimientoUser
     Date   fechaRegistroUser
     String activacionUser    
-    String idGoogle 
+    String idGoogle
+    String password
       
     
     

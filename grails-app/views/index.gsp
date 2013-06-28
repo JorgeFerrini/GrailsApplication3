@@ -144,7 +144,7 @@ if (step==7)
 	</head>
 	<body onLoad="autoImgFlip();">  
           
-                <browser:isMobile>Puedes Visitar Nuestra Version Movil desde<g:link controller="categoria" action="mlist">Aqui</g:link></browser:isMobile>
+                <browser:isMobile>Puedes Visitar Nuestra Version Movil desde<g:link controller="usuario" action="mInicio">Aqui</g:link></browser:isMobile>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
                        
                 <div class="nav" role="navigation">
@@ -185,7 +185,7 @@ if (step==7)
                   No hay usuario en este momento
                       <g:form controller="usuario" action="login" style="padding-left:200px"> 
                           
-                        <!--<div id="janrainEngageEmbed" controller="Usuario" ></div>-->
+                        <div id="janrainEngageEmbed" controller="Usuario" ></div>
                         <g:hiddenField name="username" value="jorgeferrinia@gmail.com" />
                         <fieldset class="buttons">
 					<g:submitButton name="addToCarrito" class="Productos" value="Comprar" />

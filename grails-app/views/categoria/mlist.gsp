@@ -26,7 +26,7 @@
 			</ul>
 		</div>-->       
 
-                      <g:form controller="Productos" action="showFiltering" >
+                      <g:form controller="Productos" action="mshowFiltering" >
                                   <div class="fieldcontain ${hasErrors(bean: productosInstance, field: 'nombre', 'error')} ">
                                       
                                       <g:textField name="nombre" size="70" maxlength="50" value="${productosInstance?.nombre}"/>
@@ -57,7 +57,7 @@
                 </ul>          
                 
                 <g:if test="${session.Usuario}">
-                  <center>  <g:link data-role="button" data-theme="a" data-inline="true" controller="Usuario" action="logOut">Logout</g:link> | <g:link data-role="button" data-theme="a" data-inline="true" controller="Compra" action="mlist">Mis Compras</g:link> | <g:link data-role="button" data-theme="a" data-inline="true" controller="Productos" action="mshowCarrito">Carrito:  (${session.Carrito.numeroProductos}) Productos</g:link>        </center>
+                  <center>  <g:link data-role="button" data-theme="a" data-inline="true" controller="Usuario" action="mlogOut">Logout</g:link> | <g:link data-role="button" data-theme="a" data-inline="true" controller="Compra" action="mlist">Mis Compras</g:link> | <g:link data-role="button" data-theme="a" data-inline="true" controller="Productos" action="mshowCarrito">Carrito:  (${session.Carrito.numeroProductos}) Productos</g:link>        </center>
                         
                   
                 </g:if>

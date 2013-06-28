@@ -43,4 +43,12 @@
 	<g:datePicker name="fechaNacimientoUser" precision="day"  value="${usuarioInstance?.fechaNacimientoUser}"  />
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'password', 'error')} ">
+	<label for="password">
+		<g:message code="usuario.password.label" default="Password User" />
+		
+	</label>
+	<g:textField name="password" maxlength="25" value="${usuarioInstance?.nombreUser}"/>
+</div>
+
 
